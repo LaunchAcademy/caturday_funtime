@@ -6,7 +6,7 @@ feature "view cats" do
     5.times do |i|
       cats << Cat.create!(
         name: "very fancy cat #{i}",
-        caption: "fanciest cat I've seen all day",
+        description: "fanciest cat I've seen all day",
         url: "http://example.com/cat_#{i}.png")
     end
 

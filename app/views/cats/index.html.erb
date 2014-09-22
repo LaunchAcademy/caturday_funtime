@@ -1,0 +1,4 @@
+<ul><% @cats.each do |cat| %>
+  <li><%= cat.name %></li>
+  <li><%= image_tag(cat.url) %></li>
+  <% end %></ul>
