@@ -6,7 +6,7 @@
       <h2><%= pluralize(@cat.errors.count, "error") %> prohibited this cat from being submitted:</h2>
 
       <ul>
-      <% @cat.errors.full_message.each do |msg| %>
+      <% @cat.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
