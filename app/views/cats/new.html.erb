@@ -1,36 +1,44 @@
 <h1>Submit a cat</h1>
 
-<%= form_for @cat do |f| %>
-  <% if @cat.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cat.errors.count, "error") %> prohibited this cat from being submitted:</h2>
+<% if user_signed_in? %>
 
-      <ul>
-      <% @cat.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+  <%= form_for @cat do |f| %>
+    <% if @cat.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@cat.errors.count, "error") %> prohibited this cat from being submitted:</h2>
+
+        <ul>
+        <% @cat.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+    </p>
+
+    <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+    </p>
+
+    <p>
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+    </p>
+
+    <p>
+    <%= f.submit %><br>
+    </p>
+
   <% end %>
 
-  <p>
-  <%= f.label :name %><br>
-  <%= f.text_field :name %>
-  </p>
+<% else %>
 
-  <p>
-  <%= f.label :description %><br>
-  <%= f.text_area :description %>
-  </p>
-
-  <p>
-  <%= f.label :url %><br>
-  <%= f.text_field :url %>
-  </p>
-
-  <p>
-  <%= f.submit %><br>
-  </p>
+<p>Please <%= link_to('Login', new_user_session_path)  %> to submit a cat</p>
 
 <% end %>
 

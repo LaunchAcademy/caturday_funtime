@@ -12,4 +12,8 @@
     <hr>
 </ul>
 
-<%= link_to 'Submit Cat', new_cat_path %>
+<% if user_signed_in? == true %>
+  <%= link_to 'Submit Cat', new_cat_path %>
+<% else %>
+  Please Sign in to Submit a Cat
+<% end %>
