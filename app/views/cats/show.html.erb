@@ -6,8 +6,8 @@
 </ul>
 
 <ul>
-<% if @reviews %>
-  <% @reviews.each do | review| %>
+<% if @cat.reviews %>
+  <% @cat.reviews.each do | review| %>
     <li>
       <%= review.created_at %><br>
       <%= review.review %>
