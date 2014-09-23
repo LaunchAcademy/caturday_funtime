@@ -4,3 +4,37 @@
   <li> <%= @cat.description %> </li>
   <li> <%= image_tag(@cat.url) %> </li>
 </ul>
+
+<ul>
+<% if @reviews %>
+  <% @reviews.each do | review| %>
+    <li>
+      <%= review.created_at %><br>
+      <%= review.review %>
+      </li>
+  <% end %>
+<% end %>
+</ul>
+
+<%= form_for [@cat, @review] do |f| %>
+  <% if @review.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being submitted:</h2>
+
+    <ul>
+      <%= @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <p>
+    <%= f.label :review %><br>
+    <%= f.text_area :review %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>

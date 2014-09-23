@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922201426) do
+ActiveRecord::Schema.define(version: 20140923154127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,5 +25,12 @@ ActiveRecord::Schema.define(version: 20140922201426) do
   end
 
   add_index "cats", ["url"], name: "index_cats_on_url", unique: true, using: :btree
+
+  create_table "reviews", force: true do |t|
+    t.text     "review",     null: false
+    t.integer  "cat_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
