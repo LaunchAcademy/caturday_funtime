@@ -4,7 +4,12 @@ class CatsController < ApplicationController
   end
 
   def new
-    @cat = Cat.new
+    if user_signed_in?
+      @cat = Cat.new
+    else
+      flash[:alert] = "You must be logged in to access this section!"
+      redirect_to new_user_session_path
+    end
   end
 
   def create
@@ -26,4 +31,5 @@ class CatsController < ApplicationController
   def cat_params
     params.require(:cat).permit(:name, :description, :url)
   end
+
 end

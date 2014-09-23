@@ -13,7 +13,7 @@
 <div class="nav">
 
   <ul>
-    <li><img src="/assets/caturday_logo.png"></li>
+    <li><%= image_tag("caturday_logo.png") %></li>
     <li><%= link_to 'Cat Index', cats_path %></li>
   <% if user_signed_in? %>
     <li>

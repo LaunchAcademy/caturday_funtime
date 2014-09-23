@@ -1,3 +1,8 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
 .thumbnail {
   max-width: 200px;
   max-height: 200px;
@@ -29,3 +34,11 @@
   color: #fff;
   padding: 2px;
 }*/
+
+input[type="text"], textarea {
+  width: 100%;
+}
+
+textarea {
+  height: 10em;
+}
