@@ -17,8 +17,11 @@
   max-width: 1000px;
 }
 
-.nav {
-
+.nav, .nav ul, .nav li{
+  list-style-type: none;
+  display: inline-block;
+  padding: 0;
+  vertical-align: middle;
 }
 
 /*.warning .notice, .alert {

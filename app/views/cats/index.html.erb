@@ -6,14 +6,14 @@
     <hr>
     <li>
       <p><%= link_to cat.name, cat %></p>
-      <p><%= image_tag(cat.url, class: 'thumbnail') %><p>
+      <p><%= link_to image_tag(cat.url, class: 'thumbnail'), cat %><p>
       <% end %>
     </li>
     <hr>
 </ul>
 
 <% if user_signed_in? == true %>
-  <%= link_to 'Submit Cat', new_cat_path %>
+  <p><%= link_to 'Submit Cat', new_cat_path %></p>
 <% else %>
-  Please Sign in to Submit a Cat
+  <p>Please <%= link_to('Login', new_user_session_path)  %> to submit a cat</p>
 <% end %>
