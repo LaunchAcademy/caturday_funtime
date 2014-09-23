@@ -1,4 +1,15 @@
-<ul><% @cats.each do |cat| %>
-  <li><%= cat.name %></li>
-  <li><%= image_tag(cat.url) %></li>
-  <% end %></ul>
+<h3>Cat Index:</h3>
+
+<ul>
+
+  <% @cats.each do |cat| %>
+    <hr>
+    <li>
+      <p><%= link_to cat.name, cat %></p>
+      <p><%= image_tag(cat.url, class: 'thumbnail') %><p>
+      <% end %>
+    </li>
+    <hr>
+</ul>
+
+<%= link_to 'Submit Cat', new_cat_path %>
