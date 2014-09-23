@@ -15,7 +15,7 @@
   </ul>
 <% end %>
 
-<% if user_signed_in? == true %>
+<% if user_signed_in? %>
   <p><%= link_to 'Submit Cat', new_cat_path %></p>
 <% else %>
   <p>Please <%= link_to('Login', new_user_session_path)  %> to submit a cat</p>
