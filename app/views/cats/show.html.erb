@@ -33,8 +33,11 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
 <% if !@cat.reviews.empty? %>
   <% @cat.reviews.each do | review| %>
     <li>
-      <strong><%= review.user.email %></strong> at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%><br>
-      <%= review.review %>
+      <p>
+        <strong><%= review.user.email %></strong>
+        at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%><br>
+        <%= review.review %>
+      </p>
       </li>
   <% end %>
 <% else %>
