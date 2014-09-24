@@ -11,9 +11,7 @@ feature "new review" do
 
     click_button "Log in"
 
-    @cat = Cat.new(name:"cat", url:"http://www.thinkcontra.com/wp-content/uploads/2013/04/whiskey-and-cats-photo-u1-e1365195706240.jpeg", user_id: @user.id)
-    @cat.user = @user
-    @cat.save
+    @cat = Cat.create!(name:"cat", url:"http://www.thinkcontra.com/wp-content/uploads/2013/04/whiskey-and-cats-photo-u1-e1365195706240.jpeg", user: @user)
   end
 
   scenario "user creates a review" do
