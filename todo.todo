@@ -1,12 +1,18 @@
 Things to work on
 =================
 
-Current:
+CURRENT:
+--------
 
-Todo:
+CRUD features
 
-* User needs to be able to edit/delete their posts for their cats & reviews
-* User validation for review (1 per user, per cat -- check if current_user = review user)
+* User needs to be able to edit/delete their posts for their cats
+* User needs to be able to edit/delete their posts for their reviews
+
+TODO:
+-----
+
+* User validation for review creation (1 per user, per cat -- check if current_user = review user)
 
 * Create categories table
 * Create categorizations table (cats can have many categories)
@@ -15,10 +21,11 @@ Todo:
 * Validation of submission of tag & categorizations
 
 Future (if we have time):
+-------------------------
 
 * Create a category index page
 * Create a category show page
 
 * User profile, including review posts & cats posted
 
-* Vulgarity word detection, replace with MEOW or KITTENS
+* Vulgarity word detection, replace with MEOW or KITTENS!
