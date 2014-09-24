@@ -13,15 +13,17 @@ TODO:
 -----
 
 * User validation for review creation (1 per user, per cat -- check if current_user = review user)
+* Votes for cats and reviews
 
-* Create categories table
+
+Future (if we have time):
+-------------------------
+
+* Create categories table (tags)
 * Create categorizations table (cats can have many categories)
 
 * Users can submit category tags on each cat's show page
 * Validation of submission of tag & categorizations
-
-Future (if we have time):
--------------------------
 
 * Create a category index page
 * Create a category show page
