@@ -1,15 +1,13 @@
 class CatsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+
+
   def index
     @cats = Cat.all
   end
 
   def new
-    if user_signed_in?
       @cat = Cat.new
-    else
-      flash[:alert] = "You must be logged in to access this section!"
-      redirect_to new_user_session_path
-    end
   end
 
   def create
@@ -24,6 +22,7 @@ class CatsController < ApplicationController
 
   def show
     @cat = Cat.find(params[:id])
+    @review = Review.new
   end
 
   private
