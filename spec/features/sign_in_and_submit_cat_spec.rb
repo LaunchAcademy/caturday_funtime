@@ -1,16 +1,18 @@
 require 'rails_helper'
 
-feature 'registration' do
-  scenario 'fill in registration form' do
-    visit "/users/sign_up"
+feature 'submit cat' do
+  before :each do
+    user = User.create!(email: "foo@example.com", password: "123456578")
 
-    fill_in "Email" , with: "fake@gmail.com"
-    fill_in "Password", with: "thisismypassword"
-    fill_in "Password confirmation", with: "thisismypassword"
-    click_button "Sign up"
+    visit "/users/sign_in"
 
-    expect(page).to have_content("Welcome! You have signed up successfully.")
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
 
+    click_button "Log in"
+  end
+
+  scenario 'user submits valid cat' do
     visit "/cats/new"
 
     fill_in "Name", with: "Gangsta Cat"
