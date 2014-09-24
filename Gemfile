@@ -32,6 +32,7 @@ gem 'spring',        group: :development
 group :development, :test do
   gem "rspec-rails"
   gem "capybara"
+  gem "pry-rails"
 end
 
 group :production do
@@ -49,4 +50,7 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+
+gem 'devise'
 
