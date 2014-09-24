@@ -9,7 +9,7 @@ feature "view cats" do
         name: "very fancy cat #{i}",
         description: "fanciest cat I've seen all day",
         url: "http://example.com/cat_#{i}.png",
-        user_id: user.id)
+        user: user)
     end
 
     visit cats_path
