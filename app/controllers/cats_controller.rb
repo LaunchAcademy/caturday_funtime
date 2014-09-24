@@ -25,6 +25,19 @@ class CatsController < ApplicationController
     @review = Review.new
   end
 
+  def edit
+    @cat = current_user.cats.find(params[:id])
+  end
+
+  def update
+    @cat = current_user.cats.find(params[:id])
+    if @cat.update(cat_params)
+      redirect_to cat_path
+    else
+      render :edit
+    end
+  end
+
   private
   def cat_params
     params.require(:cat).permit(:name, :description, :url)

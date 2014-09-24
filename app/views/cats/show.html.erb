@@ -1,5 +1,9 @@
 <h3><%= @cat.name %></h3>
 by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
+<br>
+<% if @cat.user == current_user %>
+<%= link_to "update_cat", edit_cat_path %>
+<% end %>
 
 <ul>
   <li> <%= image_tag(@cat.url) %> </li>
