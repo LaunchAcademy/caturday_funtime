@@ -1,8 +1,7 @@
-<h3> Her r sum catz </h3>
+<h3> <%= @cat.name %>  </h3>
 <ul>
-  <li> <%= @cat.name %> </li>
-  <li> <%= @cat.description %> </li>
   <li> <%= image_tag(@cat.url) %> </li>
+  <li> <%= @cat.description %> </li>
 </ul>
 
 <ul>
@@ -38,3 +37,5 @@
   </p>
 
 <% end %>
+
+<%= link_to 'Back to Cats', cats_path %>

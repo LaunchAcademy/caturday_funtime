@@ -1,4 +1,6 @@
 class CatsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+
   def index
     @cats = Cat.all
   end
@@ -23,7 +25,6 @@ class CatsController < ApplicationController
   end
 
   private
-
   def cat_params
     params.require(:cat).permit(:name, :description, :url)
   end

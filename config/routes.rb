@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :cats , only: [:index, :new, :create, :show] do
+  devise_for :users
+  resources :cats, only: [:index, :new, :create, :show] do
     resources :reviews, only: [:create]
   end
+  root "cats#index"
 end

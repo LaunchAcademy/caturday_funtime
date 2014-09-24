@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @cat = Cat.find(params[:cat_id])

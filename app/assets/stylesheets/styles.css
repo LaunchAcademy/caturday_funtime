@@ -1,0 +1,44 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+.thumbnail {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.container ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  min-width: 200px;
+  max-width: 1000px;
+}
+
+.nav, .nav ul, .nav li{
+  list-style-type: none;
+  display: inline-block;
+  padding: 0;
+  vertical-align: middle;
+}
+
+/*.warning .notice, .alert {
+  background-color: #C63D0F;
+  color: #fff;
+  padding: 2px;
+}*/
+
+input[type="text"], textarea {
+  width: 100%;
+}
+
+textarea {
+  height: 10em;
+}
