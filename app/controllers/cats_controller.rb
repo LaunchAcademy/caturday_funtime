@@ -19,6 +19,7 @@ class CatsController < ApplicationController
 
   def show
     @cat = Cat.find(params[:id])
+    @review = Review.new
   end
 
   private
