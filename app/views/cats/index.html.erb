@@ -7,7 +7,8 @@
       <hr>
       <% @cats.each do |cat| %>
       <li>
-        <p><%= link_to cat.name, cat %></p>
+        <p><%= link_to cat.name, cat %><br>
+        posted by <%= cat.user.email %></p>
         <p><%= link_to image_tag(cat.url, class: 'thumbnail'), cat %><p>
       </li>
       <hr>

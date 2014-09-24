@@ -1,25 +1,15 @@
-<h3> <%= @cat.name %>  </h3>
-<ul>
-  <li> <%= image_tag(@cat.url) %> </li>
-  <li> <%= @cat.description %> </li>
-</ul>
+<h3><%= @cat.name %></h3>
+by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
 
 <ul>
-<% if @cat.reviews %>
-  <% @cat.reviews.each do | review| %>
-    <li>
-      <%= review.created_at %><br>
-      <%= review.review %>
-      </li>
-  <% end %>
-<% end %>
+  <li> <%= image_tag(@cat.url) %> </li>
+  <li> <strong>Description:</strong> <%= @cat.description %> </li>
 </ul>
 
 <%= form_for [@cat, @review] do |f| %>
   <% if @review.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being submitted:</h2>
-
     <ul>
       <%= @review.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -29,13 +19,30 @@
   <% end %>
 
   <p>
-    <%= f.label :review %><br>
+    <%= f.label :review, "Write a review:" %><br>
     <%= f.text_area :review %>
   </p>
   <p>
     <%= f.submit %>
   </p>
-
 <% end %>
+
+<h3>Reviews:</h3>
+
+<ul>
+<% if !@cat.reviews.empty? %>
+  <% @cat.reviews.each do | review| %>
+    <li>
+      <p>
+        <strong><%= review.user.email %></strong>
+        at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%><br>
+        <%= review.review %>
+      </p>
+      </li>
+  <% end %>
+<% else %>
+  <p>There are no reviews yet! Make one!</p>
+<% end %>
+</ul>
 
 <%= link_to 'Back to Cats', cats_path %>

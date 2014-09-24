@@ -1,27 +1,33 @@
 Things to work on
 =================
 
-Current:
+CURRENT:
+--------
 
-* Associate users and cats
-* Assoc reviews and cats
+CRUD features
 
-Pair Alpha
+* User needs to be able to edit/delete their posts for their cats
+* User needs to be able to edit/delete their posts for their reviews
 
-* Delete cats and/or reviews that have no users associated w/ them
-* Null:false validation for users and cats and reviews
-* Change the create method in the cat controller and review controller to associate a user
-* Change cat index and show pages to display the user who created it
-* Change cat show page to display each review's user
+TODO:
+-----
 
-Pair Zeta
+* User validation for review creation (1 per user, per cat -- check if current_user = review user)
+* Votes for cats and reviews
 
-* Create categories table
+
+Future (if we have time):
+-------------------------
+
+* Create categories table (tags)
 * Create categorizations table (cats can have many categories)
+
 * Users can submit category tags on each cat's show page
 * Validation of submission of tag & categorizations
 
-Future (if we have time):
-
 * Create a category index page
 * Create a category show page
+
+* User profile, including review posts & cats posted
+
+* Vulgarity word detection, replace with MEOW or KITTENS!

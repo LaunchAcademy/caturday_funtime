@@ -22,6 +22,10 @@ body {
   max-width: 1000px;
 }
 
+.container img {
+  max-width: 100%;
+}
+
 .nav, .nav ul, .nav li{
   list-style-type: none;
   display: inline-block;
