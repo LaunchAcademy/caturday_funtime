@@ -1,13 +1,12 @@
 class CatsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
-
   def index
     @cats = Cat.all
   end
 
   def new
-      @cat = Cat.new
+    @cat = Cat.new
   end
 
   def create
@@ -26,9 +25,7 @@ class CatsController < ApplicationController
   end
 
   private
-
   def cat_params
     params.require(:cat).permit(:name, :description, :url)
   end
-
 end
