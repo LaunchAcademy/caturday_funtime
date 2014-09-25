@@ -22,6 +22,7 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.find(params[:id])
 
     if @review.update(review_params)
+      flash[:notice] = "Review updated"
       redirect_to cat_path(@review.cat_id)
     else
       flash[:alert] = "fael lol, try again wow"
