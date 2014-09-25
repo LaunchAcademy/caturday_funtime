@@ -1,23 +1,18 @@
+<div class="index">
+
 <h3>Cat Index:</h3>
 
-<% if @cats.empty? %>
-  <p>No cats yet!</p>
-<% else %>
-  <ul>
-      <hr>
+  <% if @cats.empty? %>
+    <p>No cats yet!</p>
+  <% else %>
+    <ul>
       <% @cats.each do |cat| %>
-      <li>
-        <p><%= link_to cat.name, cat %><br>
-        posted by <%= cat.user.email %></p>
-        <p><%= link_to image_tag(cat.url, class: 'thumbnail'), cat %><p>
-      </li>
-      <hr>
+        <li>
+          <p><%= link_to image_tag(cat.url, class: 'thumbnail'), cat %></p>
+          <p><strong><%= link_to cat.name, cat %></strong><br>
+          posted by <%= cat.user.email %></p>
+        </li>
       <% end %>
-  </ul>
-<% end %>
-
-<% if user_signed_in? %>
-  <p><%= link_to 'Submit Cat', new_cat_path %></p>
-<% else %>
-  <p>Please <%= link_to('Login', new_user_session_path)  %> to submit a cat</p>
-<% end %>
+    </ul>
+  <% end %>
+</div>

@@ -13,6 +13,18 @@ body {
   padding-left: 0px;
 }
 
+.index {
+  width: 100%;
+  text-align: center;
+}
+
+.index li {
+  width: 33%;
+  float: left;
+  padding: 1px;
+  text-align: center;
+}
+
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -26,11 +38,17 @@ body {
   max-width: 100%;
 }
 
-.nav, .nav ul, .nav li{
+.nav, .nav img {
+  max-width: 1000px;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+
+.nav ul, .nav li{
   list-style-type: none;
   display: inline-block;
-  padding: 0;
-  vertical-align: middle;
+  padding: 20px 5px;
+  float: right;
 }
 
 /*.warning .notice, .alert {
@@ -45,4 +63,72 @@ input[type="text"], textarea {
 
 textarea {
   height: 10em;
+}
+
+a {
+  color: #FF1493;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #FF1493;
+  text-decoration: underline;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+  outline: thin dotted;
+  outline: 5px auto;
+  outline-offset: -2px;
+}
+
+.btn:hover,
+.btn:focus {
+  color: #fff;
+  background-color: #FF1493;
+  text-decoration: none;
+}
+
+.btn:active,
+.btn.active {
+  background-image: none;
+  outline: 0;
+}
+
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn {
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  opacity: .65;
+}
+
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
 }
