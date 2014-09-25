@@ -6,19 +6,21 @@ feature 'kill cat' do
     @user = User.create!(email: "fake@gmail.com", password: "abcd5678")
 
     visit "/users/sign_in"
-binding.pry
+
     fill_in "Email", with: @user.email
     fill_in "Password", with: @user.password
+
     click_button "Log in"
+
     @cat = Cat.create!(name: "fancy cat", url: "http://a.dilcdn.com/bl/wp-content/uploads/sites/8/2012/5/fancy-cat.jpg", user: @user)
   end
 
-  scenario 'user murders a cat in cold blood', js: true do
+  scenario 'user murders a cat in cold blood' do
     visit edit_cat_path(@cat)
 
-    click_link "Wow wat a dumm cat wow, delete plz"
+    #click_link "Edit"
 
-    page.evaluate_script('window.confirm = function() { return true; }')
+    click_link "Wow wat a dumm cat wow, delete plz"
 
     expect(page).to have_content("No cats yet!")
   end
