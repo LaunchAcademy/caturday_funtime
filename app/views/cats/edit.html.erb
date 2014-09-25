@@ -29,11 +29,11 @@
 </p>
 
 <p>
-<%= f.submit %><br>
+<%= f.submit class: 'btn btn-default' %><br>
 </p>
 
 <% end %>
 
-<%= link_to 'Wow wat a dumm cat wow, delete plz', @cat, method: :delete, data: { confirm: 'wow really kill dis cat u monster??' } %>
+<p><%= link_to 'wow wat a dumm cat, delete plz!', @cat, class: 'btn btn-warning', method: :delete, data: { confirm: 'wow really kill dis cat u monster??' } %></p>
 
-<%= link_to 'Back to Cat', cat_path %>
+<p><%= link_to 'Back to Cat', cat_path %></p>

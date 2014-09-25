@@ -99,19 +99,10 @@ textarea {
   padding: 5px;
 }
 
-a {
-  color: #FF1493;
-  text-decoration: none;
-}
-a:hover,
-a:focus {
-  text-decoration: underline;
-}
-
 .btn {
   display: inline-block;
   padding: 6px 12px;
-  margin-bottom: 0;
+  margin: 0;
   font-size: 16px;
   font-weight: normal;
   line-height: 1.42857143;
@@ -132,21 +123,43 @@ a:focus {
   outline-offset: -2px;
 }
 
-.btn:hover,
-.btn:focus {
+.btn-default:hover,
+.btn-default:focus {
   color: #fff;
   background-color: #FF1493;
   text-decoration: none;
 }
 
-.btn:active,
-.btn.active {
+.btn-default:active,
+.btn-default.active {
   background-image: none;
   outline: 0;
 }
 
 .btn-default {
-  color: #333;
-  background-color: #fff;
+  color: #fff;
+  background-color: #03c383;
   border-color: #ccc;
+}
+
+.btn-warning {
+  color: #fff;
+  background-color: #FF1493;
+  border-color: #ccc;
+}
+
+.btn-warning:hover,
+.btn-warning:focus {
+  color: #fff;
+  background-color: #03c383;
+  text-decoration: none;
+}
+
+a {
+  color: #FF1493;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  text-decoration: underline;
 }
