@@ -8,8 +8,6 @@
 </head>
 <body>
 
-
-
 <div class="nav">
   <%= link_to image_tag("caturday_logo.png"), root_path %>
   <ul>
@@ -30,12 +28,13 @@
 </div>
 
 <div class="container">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <% if !notice.nil? %><p class="notice"><%= notice %></p><% end %>
+  <% if !alert.nil? %><p class="alert"><%= alert %></p><% end %>
 </div>
 
 <div class="container">
   <%= yield %>
 </div>
+
 </body>
 </html>
