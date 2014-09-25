@@ -31,12 +31,15 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
 
 <ul>
 <% if !@cat.reviews.empty? %>
-  <% @cat.reviews.each do | review| %>
+  <% @cat.reviews.each do |review| %>
     <li>
       <p>
         <strong><%= review.user.email %></strong>
         at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%><br>
-        <%= review.review %>
+        <%= review.review %><br>
+        <% if current_user == review.user %>
+          <p><%= link_to 'Edit', edit_cat_review_path(review.cat_id, review.id) %> | <%= link_to 'Delete Plz', cat_review_path(review.cat_id, review.id), method: :delete, data: { confirm: 'wow really kill dis review u monster??' } %></p>
+        <% end %>
       </p>
       </li>
   <% end %>

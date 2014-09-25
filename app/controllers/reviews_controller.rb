@@ -14,6 +14,33 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @review = current_user.reviews.find(params[:id])
+  end
+
+  def update
+    @review = current_user.reviews.find(params[:id])
+
+    if @review.update(review_params)
+      redirect_to cat_path(@review.cat_id)
+    else
+      flash[:alert] = "fael lol, try again wow"
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @review = current_user.reviews.find(params[:id])
+    if @review.destroy
+      flash[:notice] = "Deleted review"
+      redirect_to cat_path(@review.cat_id)
+    else
+      flash[:alert] = "fael lol, try again wow"
+      redirect_to cat_path(@review.cat_id)
+    end
+   end
+
+
   private
   def review_params
     params.require(:review).permit(:review)
