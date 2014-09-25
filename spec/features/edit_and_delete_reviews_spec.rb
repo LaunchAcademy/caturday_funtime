@@ -45,5 +45,6 @@ feature "edit and delete reviews" do
     click_link "Delete Plz"
 
     expect(page).to have_content("Deleted review")
+    expect(@cat.reviews.count).to eq(0)
   end
 end

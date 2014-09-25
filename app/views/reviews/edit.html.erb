@@ -1,4 +1,4 @@
-<%= form_for [@cat, @review], url: cat_review_path do |f| %>
+<%= form_for @review, url: review_path do |f| %>
   <% if @review.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being submitted:</h2>
