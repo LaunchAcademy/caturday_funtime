@@ -3,6 +3,7 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
 <br>
 <% if @cat.user == current_user %>
 <%= link_to "update_cat", edit_cat_path %>
+
 <% end %>
 
 <ul>

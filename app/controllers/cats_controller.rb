@@ -38,6 +38,16 @@ class CatsController < ApplicationController
     end
   end
 
+  def destroy
+    @cat = current_user.cats.find(params[:id])
+    if @cat.destroy
+      redirect_to cats_path
+    else
+      flash[:alert] = "fael lol, try again wow"
+      render :edit
+    end
+  end
+
   private
   def cat_params
     params.require(:cat).permit(:name, :description, :url)
