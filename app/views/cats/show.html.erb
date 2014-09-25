@@ -1,11 +1,9 @@
 <hr>
 
 <h2><%= @cat.name %></h2>
-by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
-<br>
+by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%> -
 <% if @cat.user == current_user %>
-<%= link_to "update_cat", edit_cat_path(@cat) %>
-
+<%= link_to "Edit/Delete", edit_cat_path(@cat) %>
 <% end %>
 
 <hr>
@@ -34,7 +32,7 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
     <%= f.text_area :review %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-default' %>
   </p>
 <% end %>
 
@@ -50,8 +48,8 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
         <strong><%= review.user.email %></strong>
         at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%><br>
         <%= review.review %><br>
-        <% if current_user == review.user %>
-          <p><%= link_to 'Edit', edit_review_path(review) %> | <%= link_to 'Delete Plz', review_path(review), method: :delete, data: { confirm: 'wow really kill dis review u monster??' } %></p>
+        <% if current_user == review.user %><br>
+          <%= link_to 'Edit', edit_review_path(review) %> | <%= link_to 'Delete Plz', review_path(review), method: :delete, data: { confirm: 'wow really kill dis review u monster??' } %></p>
         <% end %>
       </p>
       </li>
