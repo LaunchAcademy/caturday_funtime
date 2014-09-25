@@ -1,18 +1,22 @@
 <div class="index">
 
-<h3>Cat Index:</h3>
+<h1>Cat Index:</h1>
 
-  <% if @cats.empty? %>
-    <p>No cats yet!</p>
-  <% else %>
-    <ul>
-      <% @cats.each do |cat| %>
-        <li>
-          <p><%= link_to image_tag(cat.url, class: 'thumbnail'), cat %></p>
-          <p><strong><%= link_to cat.name, cat %></strong><br>
-          posted by <%= cat.user.email %></p>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
+<hr>
+
+<% if @cats.empty? %>
+  <p>No cats yet!</p>
+<% else %>
+  <ul>
+    <% @cats.each do |cat| %>
+      <li>
+        <p><%= link_to image_tag(cat.url, class: 'thumbnail'), cat %></p>
+        <p><strong><%= link_to cat.name, cat %></strong><br>
+        posted by <%= cat.user.email %></p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 </div>
+
+
