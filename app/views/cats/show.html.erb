@@ -1,10 +1,16 @@
-<h3><%= @cat.name %></h3>
+<hr>
+
+<h2><%= @cat.name %></h2>
 by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
+
+<hr>
 
 <ul>
   <li> <%= image_tag(@cat.url) %> </li>
-  <li> <strong>Description:</strong> <%= @cat.description %> </li>
+  <li> <p><strong>Description:</strong> <%= @cat.description %><p> </li>
 </ul>
+
+<hr>
 
 <%= form_for [@cat, @review] do |f| %>
   <% if @review.errors.any? %>
@@ -26,6 +32,8 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
     <%= f.submit %>
   </p>
 <% end %>
+
+<hr>
 
 <h3>Reviews:</h3>
 
