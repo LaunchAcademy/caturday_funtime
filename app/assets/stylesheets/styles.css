@@ -123,23 +123,36 @@ textarea {
   outline-offset: -2px;
 }
 
-.btn:hover,
-.btn:focus {
+.btn-default:hover,
+.btn-default:focus {
   color: #fff;
   background-color: #FF1493;
   text-decoration: none;
 }
 
-.btn:active,
-.btn.active {
+.btn-default:active,
+.btn-default.active {
   background-image: none;
   outline: 0;
 }
 
 .btn-default {
-  color: #333;
+  color: #fff;
   background-color: #03c383;
   border-color: #ccc;
+}
+
+.btn-warning {
+  color: #fff;
+  background-color: #FF1493;
+  border-color: #ccc;
+}
+
+.btn-warning:hover,
+.btn-warning:focus {
+  color: #fff;
+  background-color: #03c383;
+  text-decoration: none;
 }
 
 a {
