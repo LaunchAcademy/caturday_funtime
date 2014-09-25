@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resources :cats do
     resources :reviews, only: [:create]
   end
+  resources :reviews, only: [:edit, :update, :destroy]
   root "cats#index"
 end

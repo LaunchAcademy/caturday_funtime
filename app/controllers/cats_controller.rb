@@ -32,6 +32,7 @@ class CatsController < ApplicationController
   def update
     @cat = current_user.cats.find(params[:id])
     if @cat.update(cat_params)
+      flash[:notice] = "Cat Updated"
       redirect_to cat_path
     else
       render :edit
@@ -41,6 +42,7 @@ class CatsController < ApplicationController
   def destroy
     @cat = current_user.cats.find(params[:id])
     if @cat.destroy
+      flash[:notice] = "Cat Destroyed"
       redirect_to cats_path
     else
       flash[:alert] = "fael lol, try again wow"
