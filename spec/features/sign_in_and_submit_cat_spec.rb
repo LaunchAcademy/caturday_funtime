@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'submit cat' do
   before :each do
-    user = User.create!(email: "foo@example.com", password: "123456578")
+    @user = build(:user)
 
     visit "/users/sign_in"
 

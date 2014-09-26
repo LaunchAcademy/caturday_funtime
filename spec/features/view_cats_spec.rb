@@ -3,7 +3,7 @@ require "rails_helper"
 feature "view cats" do
   scenario "list cats on index page" do
     cats = []
-    user = User.create!(email: "foo@example.com", password: "123456578")
+    @user = build(:user)
     5.times do |i|
       cats << Cat.create!(
         name: "very fancy cat #{i}",
@@ -23,7 +23,7 @@ end
 
 feature "view cat" do
   scenario "view cat" do
-    user = User.create!(email: "foo@example.com", password: "123456578")
+    @user = build(:user)
     cat = Cat.create!(name:"cat",
       url:"http://www.thinkcontra.com/wp-content/uploads/2013/04/whiskey-and-cats-photo-u1-e1365195706240.jpeg", user_id: user.id)
 

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+#ruby '2.0.0'
 
 gem 'unicorn'
 
@@ -33,6 +33,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "capybara"
   gem "pry-rails"
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :production do
