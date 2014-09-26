@@ -1,14 +1,23 @@
 <hr>
 
 <h2><%= @cat.name %></h2>
-by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%> -
+by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%> |
 <% if @cat.user == current_user %>
 <%= link_to "Edit/Delete", edit_cat_path(@cat) %>
 <% end %>
 
-<%= @cat.vote_score || 0 %> Votes -
-<%= link_to "Upvote cat", cat_vote_path(@cat, 1), method: :put %>
-<%= link_to "Downvote cat", cat_vote_path(@cat, -1), method: :put %>
+<%= @cat.vote_score || 0 %> votes
+
+<% if @vote.user == current_user && @vote.value == 1 %>
+  <%= link_to image_tag("paw_upvoted.png"), cat_vote_path(@cat, 1), method: :put %>
+  <%= link_to image_tag("paw_down.png"), cat_vote_path(@cat, -1), method: :put %>
+<% elsif @vote.user == current_user && @vote.value == -1 %>
+  <%= link_to image_tag("paw_up.png"), cat_vote_path(@cat, 1), method: :put %>
+  <%= link_to image_tag("paw_downvoted.png"), cat_vote_path(@cat, -1), method: :put %>
+<% else %>
+  <%= link_to image_tag("paw_up.png"), cat_vote_path(@cat, 1), method: :put %>
+  <%= link_to image_tag("paw_down.png"), cat_vote_path(@cat, -1), method: :put %>
+<% end %>
 
 <hr>
 
@@ -52,9 +61,19 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
         <strong><%= review.user.email %></strong>
         at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%><br>
         <%= review.review %><br>
-        <%= review.vote_score || 0 %> Votes -
-        <%= link_to "Upvote review", review_vote_path(review, 1), method: :put %>
-        <%= link_to "Downvote review", review_vote_path(review, -1), method: :put %>
+        <%= review.vote_score || 0 %> votes
+        <% review_vote = review.votes.find_or_initialize_by(user: current_user) %>
+        <% if review_vote.user == current_user && review_vote.value == 1 %>
+          <%= link_to image_tag("paw_upvoted.png"), review_vote_path(review, 1), method: :put %>
+          <%= link_to image_tag("paw_down.png"), review_vote_path(review, -1), method: :put %>
+        <% elsif review_vote.user == current_user && review_vote.value == -1 %>
+          <%= link_to image_tag("paw_up.png"), review_vote_path(review, 1), method: :put %>
+          <%= link_to image_tag("paw_downvoted.png"), review_vote_path(review, -1), method: :put %>
+        <% else %>
+          <%= link_to image_tag("paw_up.png"), review_vote_path(review, 1), method: :put %>
+          <%= link_to image_tag("paw_down.png"), review_vote_path(review, -1), method: :put %>
+        <% end %>
+
         <% if current_user == review.user %><br>
           <%= link_to 'Edit', edit_review_path(review) %> | <%= link_to 'Delete Plz', review_path(review), method: :delete, data: { confirm: 'wow really kill dis review u monster??' } %></p>
         <% end %>
