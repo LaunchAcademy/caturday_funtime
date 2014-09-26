@@ -6,6 +6,9 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
 <%= link_to "Edit/Delete", edit_cat_path(@cat) %>
 <% end %>
 
+<%= link_to "Upvote cat", cat_vote_path(@cat, 1), method: :put %>
+<%= link_to "Downvote cat", cat_vote_path(@cat, -1), method: :put %>
+
 <hr>
 
 <ul>
