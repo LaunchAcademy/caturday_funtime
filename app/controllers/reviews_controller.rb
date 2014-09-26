@@ -10,7 +10,8 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to cat_path(@review.cat)
     else
-      render 'cats/show'
+      flash[:alert] = "fael review lol, try again wow"
+      redirect_to cat_path(@review.cat)
     end
   end
 
@@ -37,7 +38,7 @@ class ReviewsController < ApplicationController
     if params[:vote_value].to_i == @vote.value
       @vote.delete
     else
-      @vote.value = params[:vote_value]
+      @vote.value = params[:vote_value] || 0
       @vote.save
     end
 

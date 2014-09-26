@@ -29,6 +29,6 @@ feature "new review" do
     fill_in "Write a review", with: ""
     click_button "Create Review"
 
-    expect(page).to have_content("Review can't be blank")
+    expect(page).to have_content("fael review lol, try again wow")
   end
 end
