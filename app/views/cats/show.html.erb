@@ -3,10 +3,10 @@
 <h2><%= @cat.name %></h2>
 by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%> |
 <% if @cat.user == current_user %>
-<%= link_to "Edit/Delete", edit_cat_path(@cat) %>
+<%= link_to "Edit/Delete", edit_cat_path(@cat) %> |
 <% end %>
 
-<%= @cat.vote_score || 0 %> votes
+<strong> <%= @cat.vote_score || 0 %> votes </strong>
 
 <% if @vote.user == current_user && @vote.value == 1 %>
   <%= link_to image_tag("paw_upvoted.png"), cat_vote_path(@cat, 1), method: :put %>
@@ -59,8 +59,7 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
     <li>
       <p>
         <strong><%= review.user.email %></strong>
-        at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%><br>
-        <%= review.review %><br>
+        at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%> |
         <%= review.vote_score || 0 %> votes
         <% review_vote = review.votes.find_or_initialize_by(user: current_user) %>
         <% if review_vote.user == current_user && review_vote.value == 1 %>
@@ -73,6 +72,8 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
           <%= link_to image_tag("paw_up.png"), review_vote_path(review, 1), method: :put %>
           <%= link_to image_tag("paw_down.png"), review_vote_path(review, -1), method: :put %>
         <% end %>
+        <br>
+        <%= review.review %>
 
         <% if current_user == review.user %><br>
           <%= link_to 'Edit', edit_review_path(review) %> | <%= link_to 'Delete Plz', review_path(review), method: :delete, data: { confirm: 'wow really kill dis review u monster??' } %></p>
