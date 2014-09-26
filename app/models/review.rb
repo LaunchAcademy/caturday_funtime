@@ -4,4 +4,8 @@ class Review < ActiveRecord::Base
   belongs_to :user
 
   validates :review, :cat, :user, presence: true
+
+  def vote_score
+    return votes.sum(:value)
+  end
 end

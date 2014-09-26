@@ -64,9 +64,6 @@ class CatsController < ApplicationController
     end
   end
 
-  # def vote
-  # end
-
   private
   def cat_params
     params.require(:cat).permit(:name, :description, :url)

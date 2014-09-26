@@ -30,6 +30,20 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def vote
+    review = Review.find(params[:id])
+    vote = review.votes.find_or_initialize_by(user: current_user)
+
+    if params[:vote_value].to_i == vote.value
+      vote.delete
+    else
+      vote.value = params[:vote_value]
+      vote.save
+    end
+
+    redirect_to cat_path(review.cat)
+  end
+
   def destroy
     @review = current_user.reviews.find(params[:id])
     if @review.destroy
