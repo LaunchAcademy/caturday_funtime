@@ -6,21 +6,32 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
 <%= link_to "Edit/Delete", edit_cat_path(@cat) %> |
 <% end %>
 
-<strong> <%= @cat.vote_score || 0 %> votes </strong>
-
 <div class="cat-vote">
+
+<strong> <%= @cat.vote_score || 0 %> Votes </strong>
+
   <%= form_for [@cat, @vote] do |f| %>
   <%= f.hidden_field :value, value: "1" %>
-  <%= f.submit "Upvote" %>
+    <% if @vote.user == current_user && @vote.value == 1 %>
+      <%= image_submit_tag("paw_upvoted.png") %>
+    <% else %>
+      <%= image_submit_tag("paw_up.png") %>
+    <% end %>
   <% end %>
 
   <%= form_for [@cat, @vote] do |f| %>
   <%= f.hidden_field :value, value: "-1" %>
-  <%= f.submit "Downvote" %>
+    <% if @vote.user == current_user && @vote.value == -1 %>
+      <%= image_submit_tag("paw_downvoted.png") %>
+    <% else %>
+      <%= image_submit_tag("paw_down.png") %>
+    <% end %>
   <% end %>
 
-  <%= form_for [@cat, @vote], method: :delete do |f| %>
-  <%= f.submit "Clear Vote" %>
+  <% if @vote.user == current_user && !@vote.value.nil? %>
+    <%= form_for [@cat, @vote], method: :delete do |f| %>
+    <%= image_submit_tag("paw_clear.png") %>
+  <% end %>
   <% end %>
 </div>
 
@@ -51,7 +62,7 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
     <%= f.text_area :review %>
   </p>
   <p>
-    <%= f.submit class: 'btn btn-default' %>
+    <%= f.submit class: 'button radius' %>
   </p>
 <% end %>
 
@@ -66,7 +77,7 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
       <p>
         <strong><%= review.user.email %></strong>
         at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%> |
-        <%= review.vote_score || 0 %> votes
+        <strong><%= review.vote_score || 0 %> votes</strong>
         <br>
         <%= review.review %>
 
@@ -75,21 +86,31 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
         <% end %>
 
         <% if user_signed_in? %>
-        <div class="review-<%= review.id %>-vote">
+        <div class="review-<%= review.id %>-vote cat-vote">
           <% review_vote = review.votes.find_or_initialize_by(user: current_user) %>
 
           <%= form_for [review, review_vote] do |f| %>
             <%= f.hidden_field :value, value: "1" %>
-            <%= f.submit "Upvote" %>
+              <% if review_vote.user == current_user && review_vote.value == 1 %>
+                <%= image_submit_tag("paw_upvoted.png") %>
+              <% else %>
+                <%= image_submit_tag("paw_up.png") %>
+              <% end %>
           <% end %>
 
           <%= form_for [review, review_vote] do |f| %>
             <%= f.hidden_field :value, value: "-1" %>
-            <%= f.submit "Downvote" %>
+              <% if review_vote.user == current_user && review_vote.value == -1 %>
+                <%= image_submit_tag("paw_downvoted.png") %>
+              <% else %>
+                <%= image_submit_tag("paw_down.png") %>
+              <% end %>
           <% end %>
 
-          <%= form_for [review, review_vote], method: :delete do |f| %>
-            <%= f.submit "Clear Vote" %>
+          <% if review_vote.user == current_user && !review_vote.value.nil? %>
+            <%= form_for [review, review_vote], method: :delete do |f| %>
+              <%= image_submit_tag("paw_clear.png") %>
+            <% end %>
           <% end %>
         </div>
         <% end %>

@@ -2,35 +2,66 @@
 <html>
 <head>
   <title>Caturday Funtime</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>
 
-<div class="nav">
-  <%= link_to image_tag("caturday_logo.png"), root_path %>
+<div class="show-for-small-only tiny-nav">
+
+  <h3>Caturday Funtime! :3</h3>
+
   <ul>
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-default', :method => :delete) %>
-    </li>
-    <li>
-      <%= link_to 'Submit Cat', new_cat_path, class: 'btn btn-default' %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to('Login', new_user_session_path, class: 'btn btn-default') %>
-    </li>
-  <% end %>
-    <li><%= link_to 'Cat Index', cats_path, class: 'btn btn-default' %></li>
-  </ul>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to('Logout', destroy_user_session_path, class: 'button radius tiny', :method => :delete) %>
+      </li>
+      <li>
+        <%= link_to 'Submit Cat', new_cat_path, class: 'button radius tiny' %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to('Login', new_user_session_path, class: 'button radius tiny') %>
+      </li>
+    <% end %>
+      <li>
+        <%= link_to 'Cat Index', cats_path, class: 'button radius tiny' %>
+      </li>
+    </ul>
+
 </div>
 
 <div class="container">
-  <% if !notice.nil? %><p class="notice"><%= notice %></p><% end %>
-  <% if !alert.nil? %><p class="alert"><%= alert %></p><% end %>
+  <div class="show-for-medium-up nav">
+
+
+    <%= link_to image_tag("caturday_logo.png"), root_path %>
+
+
+    <ul class="right">
+      <% if user_signed_in? %>
+        <li>
+        <%= link_to('Logout', destroy_user_session_path, class: 'button radius', :method => :delete) %>
+        </li>
+        <li>
+          <%= link_to 'Submit Cat', new_cat_path, class: 'button radius' %>
+        </li>
+      <% else %>
+        <li>
+        <%= link_to('Login', new_user_session_path, class: 'button radius') %>
+        </li>
+      <% end %>
+        <li><%= link_to 'Cat Index', cats_path, class: 'button radius' %></li>
+  </div>
+</div>
+
+
+<div class="container">
+  <% if !notice.nil? %><p class="alert-box radius success"><%= notice %></p><% end %>
+  <% if !alert.nil? %><p class="alert-box radius warning"><%= alert %></p><% end %>
 </div>
 
 <div class="container">
