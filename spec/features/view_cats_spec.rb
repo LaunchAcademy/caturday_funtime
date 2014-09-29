@@ -2,11 +2,7 @@ require "rails_helper"
 
 feature "view cats" do
   scenario "list cats on index page" do
-    cats = []
-    @user = FactoryGirl.create(:user)
-    5.times do |i|
-      cats << @cat = FactoryGirl.create(:cat, user: @user, url: "http://example.com/cat_#{i}.png")
-    end
+    cats = FactoryGirl.create_list(:cat, 5)
 
     visit cats_path
 
