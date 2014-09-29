@@ -40,20 +40,6 @@ class CatsController < ApplicationController
     end
   end
 
-  def vote
-    cat = Cat.find(params[:id])
-    @vote = cat.votes.find_or_initialize_by(user: current_user)
-
-    if params[:vote_value].to_i == @vote.value
-      @vote.delete
-    else
-      @vote.value = params[:vote_value]
-      @vote.save
-    end
-
-    redirect_to cat_path(params[:id])
-  end
-
   def destroy
     @cat = current_user.cats.find(params[:id])
     if @cat.destroy
@@ -66,6 +52,7 @@ class CatsController < ApplicationController
   end
 
   private
+
   def cat_params
     params.require(:cat).permit(:name, :description, :url)
   end

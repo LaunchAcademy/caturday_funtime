@@ -2,13 +2,15 @@ require 'rails_helper'
 
 feature "cast upvotes and downvotes for cats and reviews" do
   before :each do
-      sign_in
+    sign_in
   end
 
   scenario "user upvotes a cat" do
     visit cat_path(@cat)
 
-    find(:xpath, "//a/img[@alt='upvote']/..").click
+    within(".cat-vote") do
+      click_button "Upvote"
+    end
 
     expect(@cat.vote_score).to eq(1)
   end
@@ -16,17 +18,21 @@ feature "cast upvotes and downvotes for cats and reviews" do
   scenario "user downvotes a cat" do
     visit cat_path(@cat)
 
-    find(:xpath, "//a/img[@alt='downvote']/..").click
+    within(".cat-vote") do
+      click_button "Downvote"
+    end
 
     expect(@cat.vote_score).to eq(-1)
   end
 
-  scenario "user downvotes a cat again" do
+  scenario "user cleares an existing vote" do
+    Vote.create!(user: @user, voteable: @cat, value: 1)
+
     visit cat_path(@cat)
 
-    find(:xpath, "//a/img[@alt='downvote']/..").click
-
-    find(:xpath, "//a/img[@alt='downvoted']/..").click
+    within(".cat-vote") do
+      click_button "Clear Vote"
+    end
 
     expect(@cat.vote_score).to eq(0)
   end
@@ -34,7 +40,9 @@ feature "cast upvotes and downvotes for cats and reviews" do
   scenario "user upvotes a review" do
     visit cat_path(@cat)
 
-    find(:xpath, "//a/img[@alt='upvote review']/..").click
+    within(".review-#{@review.id}-vote") do
+      click_button "Upvote"
+    end
 
     expect(@review.vote_score).to eq(1)
   end
@@ -42,7 +50,9 @@ feature "cast upvotes and downvotes for cats and reviews" do
   scenario "user downvotes a review" do
     visit cat_path(@cat)
 
-    find(:xpath, "//a/img[@alt='downvote review']/..").click
+    within(".review-#{@review.id}-vote") do
+      click_button "Downvote"
+    end
 
     expect(@review.vote_score).to eq(-1)
   end

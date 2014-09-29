@@ -10,8 +10,10 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to cat_path(@review.cat)
     else
+      @vote = @cat.votes.find_or_initialize_by(user: current_user)
       flash[:alert] = "fael review lol, try again wow"
-      redirect_to cat_path(@review.cat)
+      render "cats/show"
+      # redirect_to cat_path(@review.cat)
     end
   end
 
@@ -31,20 +33,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def vote
-    review = Review.find(params[:id])
-    @vote = review.votes.find_or_initialize_by(user: current_user)
-
-    if params[:vote_value].to_i == @vote.value
-      @vote.delete
-    else
-      @vote.value = params[:vote_value] || 0
-      @vote.save
-    end
-
-    redirect_to cat_path(review.cat)
-  end
-
   def destroy
     @review = current_user.reviews.find(params[:id])
     if @review.destroy
@@ -54,10 +42,10 @@ class ReviewsController < ApplicationController
       flash[:alert] = "fael lol, try again wow"
       redirect_to cat_path(@review.cat)
     end
-   end
-
+  end
 
   private
+
   def review_params
     params.require(:review).permit(:review)
   end
