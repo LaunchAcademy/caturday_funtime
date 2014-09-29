@@ -1,5 +1,5 @@
 <hr>
-<h1>Submit a Cat</h1>
+<h1>Edit your cat</h1>
 <hr>
 
 <%= form_for @cat do |f| %>
@@ -36,4 +36,6 @@
 
 <% end %>
 
-<%= link_to 'Back to Cats', cats_path %>
+<p><%= link_to 'wow wat a dumm cat, delete plz!', @cat, class: 'btn btn-warning', method: :delete, data: { confirm: 'wow really kill dis cat u monster??' } %></p>
+
+<p><%= link_to 'Back to Cat', cat_path %></p>

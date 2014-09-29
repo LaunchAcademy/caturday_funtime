@@ -1,17 +1,45 @@
-<h3><%= @cat.name %></h3>
-by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
+<hr>
+
+<h2><%= @cat.name %></h2>
+by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%> |
+<% if @cat.user == current_user %>
+<%= link_to "Edit/Delete", edit_cat_path(@cat) %> |
+<% end %>
+
+<strong> <%= @cat.vote_score || 0 %> votes </strong>
+
+<div class="cat-vote">
+  <%= form_for [@cat, @vote] do |f| %>
+  <%= f.hidden_field :value, value: "1" %>
+  <%= f.submit "Upvote" %>
+  <% end %>
+
+  <%= form_for [@cat, @vote] do |f| %>
+  <%= f.hidden_field :value, value: "-1" %>
+  <%= f.submit "Downvote" %>
+  <% end %>
+
+  <%= form_for [@cat, @vote], method: :delete do |f| %>
+  <%= f.submit "Clear Vote" %>
+  <% end %>
+</div>
+
+
+<hr>
 
 <ul>
   <li> <%= image_tag(@cat.url) %> </li>
-  <li> <strong>Description:</strong> <%= @cat.description %> </li>
+  <li> <p><strong>Description:</strong> <%= @cat.description %><p> </li>
 </ul>
+
+<hr>
 
 <%= form_for [@cat, @review] do |f| %>
   <% if @review.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being submitted:</h2>
     <ul>
-      <%= @review.errors.full_messages.each do |msg| %>
+      <% @review.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
@@ -23,20 +51,48 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
     <%= f.text_area :review %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-default' %>
   </p>
 <% end %>
+
+<hr>
 
 <h3>Reviews:</h3>
 
 <ul>
 <% if !@cat.reviews.empty? %>
-  <% @cat.reviews.each do | review| %>
+  <% @cat.reviews.each do |review| %>
     <li>
       <p>
         <strong><%= review.user.email %></strong>
-        at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%><br>
+        at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%> |
+        <%= review.vote_score || 0 %> votes
+        <br>
         <%= review.review %>
+
+        <% if current_user == review.user %><br>
+          <%= link_to 'Edit', edit_review_path(review) %> | <%= link_to 'Delete Plz', review_path(review), method: :delete, data: { confirm: 'wow really kill dis review u monster??' } %></p>
+        <% end %>
+
+        <% if user_signed_in? %>
+        <div class="review-<%= review.id %>-vote">
+          <% review_vote = review.votes.find_or_initialize_by(user: current_user) %>
+
+          <%= form_for [review, review_vote] do |f| %>
+            <%= f.hidden_field :value, value: "1" %>
+            <%= f.submit "Upvote" %>
+          <% end %>
+
+          <%= form_for [review, review_vote] do |f| %>
+            <%= f.hidden_field :value, value: "-1" %>
+            <%= f.submit "Downvote" %>
+          <% end %>
+
+          <%= form_for [review, review_vote], method: :delete do |f| %>
+            <%= f.submit "Clear Vote" %>
+          <% end %>
+        </div>
+        <% end %>
       </p>
       </li>
   <% end %>

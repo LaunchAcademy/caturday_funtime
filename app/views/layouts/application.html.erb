@@ -5,35 +5,32 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>
 
-
-
 <div class="nav">
-
+  <%= link_to image_tag("caturday_logo.png"), root_path %>
   <ul>
-    <li><%= image_tag("caturday_logo.png") %></li>
-    <li><%= link_to 'Cat Index', cats_path %></li>
   <% if user_signed_in? %>
     <li>
-      <%= link_to 'Submit Cat', new_cat_path %>
+    <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-default', :method => :delete) %>
     </li>
     <li>
-    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+      <%= link_to 'Submit Cat', new_cat_path, class: 'btn btn-default' %>
     </li>
   <% else %>
     <li>
-    <%= link_to('Login', new_user_session_path)  %>
+    <%= link_to('Login', new_user_session_path, class: 'btn btn-default') %>
     </li>
   <% end %>
+    <li><%= link_to 'Cat Index', cats_path, class: 'btn btn-default' %></li>
   </ul>
-
 </div>
 
-<div class="warning">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<div class="container">
+  <% if !notice.nil? %><p class="notice"><%= notice %></p><% end %>
+  <% if !alert.nil? %><p class="alert"><%= alert %></p><% end %>
 </div>
 
 <div class="container">
