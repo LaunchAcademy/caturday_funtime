@@ -8,4 +8,8 @@ class Review < ActiveRecord::Base
   def vote_score
     return votes.sum(:value)
   end
+
+  def editable_by?(user)
+    self.user == user || user.is_admin?
+  end
 end

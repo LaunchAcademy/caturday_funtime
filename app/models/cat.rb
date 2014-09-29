@@ -11,4 +11,12 @@ class Cat < ActiveRecord::Base
   def vote_score
     return votes.sum(:value)
   end
+
+  def self.authorized_find(user, id)
+    if user.is_admin?
+      find(id)
+    else
+      where(user: user).find(params[:id])
+    end
+  end
 end
