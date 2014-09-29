@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry-rails'
 
 feature 'kill cat' do
   before :each do
