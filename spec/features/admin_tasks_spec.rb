@@ -37,7 +37,7 @@ feature 'admin can manage content' do
   scenario 'admin deletes inappropriate cat' do
     visit cat_path(@cat)
     click_button "PURGE THIS SCOURGE"
-    expect(page).to have_content("monster vanquished!")
+    expect(page).to have_content("Cat Destroyed")
   end
 
   scenario 'admin deletes useless review' do

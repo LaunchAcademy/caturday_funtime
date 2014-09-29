@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
 
   def authorize!
     if current_user.nil? or !current_user.is_admin?
-      flash[:notice] = "You are not authorized to view this page."
-      redirect_to root_path
+      raise ActionController::RoutingError.new("Not Found")
     end
   end
 end

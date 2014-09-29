@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :destroy]
-    resources :cats, only: [:index, :destroy]
   end
 
   root "cats#index"

@@ -16,7 +16,7 @@ class Cat < ActiveRecord::Base
     if user.is_admin?
       find(id)
     else
-      where(user: user).find(params[:id])
+      where(user: user).find(id)
     end
   end
 end
