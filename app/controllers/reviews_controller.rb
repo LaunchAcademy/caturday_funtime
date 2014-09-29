@@ -34,7 +34,11 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = current_user.reviews.find(params[:id])
+    if current_user.is_admin?
+      @review = Review.find(params[:id])
+    else
+      @review = current_user.reviews.find(params[:id])
+    end
     if @review.destroy
       flash[:notice] = "Deleted review"
       redirect_to cat_path(@review.cat)

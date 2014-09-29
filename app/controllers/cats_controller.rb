@@ -41,7 +41,12 @@ class CatsController < ApplicationController
   end
 
   def destroy
-    @cat = current_user.cats.find(params[:id])
+    if current_user.is_admin?
+      @cat = Cat.find(params[:id])
+    else
+      @cat = current_user.cats.find(params[:id])
+    end
+    
     if @cat.destroy
       flash[:notice] = "Cat Destroyed"
       redirect_to cats_path
