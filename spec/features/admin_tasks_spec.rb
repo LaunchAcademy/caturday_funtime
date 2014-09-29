@@ -41,9 +41,10 @@ feature 'admin can manage content' do
   end
 
   scenario 'admin deletes useless review' do
-    visit admin_cats_path
-    click_button "delete this monster"
-    expect(page).to have_content("monster vanquished!")
+    visit cat_path(@cat)
+    click_link "Delete Plz"
+    expect(page).to have_content("Deleted review")
+    expect(@cat.reviews.count).to eq(0)
   end
 
   def sign_in
