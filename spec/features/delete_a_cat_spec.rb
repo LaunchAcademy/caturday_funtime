@@ -3,14 +3,9 @@ require 'pry-rails'
 
 feature 'kill cat' do
   before :each do
-    @user = build(:user)
+    @user = FactoryGirl.create(:user)
 
-    visit "/users/sign_in"
-
-    fill_in "Email", with: @user.email
-    fill_in "Password", with: @user.password
-
-    click_button "Log in"
+    sign_in_as(@user)
 
     @cat = Cat.create!(name: "fancy cat", url: "http://a.dilcdn.com/bl/wp-content/uploads/sites/8/2012/5/fancy-cat.jpg", user: @user)
   end
@@ -18,9 +13,7 @@ feature 'kill cat' do
   scenario 'user murders a cat in cold blood' do
     visit edit_cat_path(@cat)
 
-    #click_link "Edit"
-
-    click_link "Wow wat a dumm cat wow, delete plz"
+    click_link "wow wat a dumm cat, delete plz!"
 
     expect(page).to have_content("No cats yet!")
   end

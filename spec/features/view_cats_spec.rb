@@ -23,9 +23,9 @@ end
 
 feature "view cat" do
   scenario "view cat" do
-    @user = build(:user)
+    @user = FactoryGirl.create(:user)
     cat = Cat.create!(name:"cat",
-      url:"http://www.thinkcontra.com/wp-content/uploads/2013/04/whiskey-and-cats-photo-u1-e1365195706240.jpeg", user_id: user.id)
+      url:"http://www.thinkcontra.com/wp-content/uploads/2013/04/whiskey-and-cats-photo-u1-e1365195706240.jpeg", user_id: @user.id)
 
     visit cat_path(cat)
       expect(page).to have_content(cat.name)

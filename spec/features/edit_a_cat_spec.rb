@@ -2,14 +2,9 @@ require 'rails_helper'
 
 feature 'edit cat' do
   before :each do
-    @user = build(:user)
+    @user = FactoryGirl.create(:user)
 
-    visit "/users/sign_in"
-
-    fill_in "Email", with: @user.email
-    fill_in "Password", with: @user.password
-
-    click_button "Log in"
+    sign_in_as(@user)
 
     @cat = Cat.create!(name: "fancy cat", url: "http://a.dilcdn.com/bl/wp-content/uploads/sites/8/2012/5/fancy-cat.jpg", user: @user)
   end
