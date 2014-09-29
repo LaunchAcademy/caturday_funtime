@@ -58,14 +58,9 @@ feature "cast upvotes and downvotes for cats and reviews" do
   end
 
   def sign_in
-    @user = User.create!(email: "foo@example.com", password: "12345678")
+    @user = FactoryGirl.create(:user)
 
-    visit "/users/sign_in"
-
-    fill_in "Email", with: @user.email
-    fill_in "Password", with: @user.password
-
-    click_button "Log in"
+     sign_in_as(@user)
 
     @cat = Cat.create!(name:"cat", url:"http://www.thinkcontra.com/wp-content/uploads/2013/04/whiskey-and-cats-photo-u1-e1365195706240.jpeg", user: @user)
     @review = Review.create!(review: "I absolutely LOVE this cat picture",
