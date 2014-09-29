@@ -5,11 +5,7 @@ feature "view cats" do
     cats = []
     @user = build(:user)
     5.times do |i|
-      cats << Cat.create!(
-        name: "very fancy cat #{i}",
-        description: "fanciest cat I've seen all day",
-        url: "http://example.com/cat_#{i}.png",
-        user: @user)
+      cats << @cat = FactoryGirl.create(:cat, user: @user, url: "http://example.com/cat_#{i}.png")
     end
 
     visit cats_path
@@ -24,11 +20,10 @@ end
 feature "view cat" do
   scenario "view cat" do
     @user = FactoryGirl.create(:user)
-    cat = Cat.create!(name:"cat",
-      url:"http://www.thinkcontra.com/wp-content/uploads/2013/04/whiskey-and-cats-photo-u1-e1365195706240.jpeg", user_id: @user.id)
+    @cat = FactoryGirl.create(:cat, user: @user)
 
-    visit cat_path(cat)
-      expect(page).to have_content(cat.name)
-      expect(page).to have_css("img[src=\"#{cat.url}\"]")
+    visit cat_path(@cat)
+      expect(page).to have_content(@cat.name)
+      expect(page).to have_css("img[src=\"#{@cat.url}\"]")
   end
 end

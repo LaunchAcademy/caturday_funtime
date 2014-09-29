@@ -7,7 +7,7 @@ feature 'kill cat' do
 
     sign_in_as(@user)
 
-    @cat = Cat.create!(name: "fancy cat", url: "http://a.dilcdn.com/bl/wp-content/uploads/sites/8/2012/5/fancy-cat.jpg", user: @user)
+    @cat = FactoryGirl.create(:cat, user: @user)
   end
 
   scenario 'user murders a cat in cold blood' do

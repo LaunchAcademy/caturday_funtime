@@ -6,7 +6,7 @@ feature "new review" do
 
     sign_in_as(@user)
 
-    @cat = Cat.create!(name:"cat", url:"http://www.thinkcontra.com/wp-content/uploads/2013/04/whiskey-and-cats-photo-u1-e1365195706240.jpeg", user: @user)
+   @cat = FactoryGirl.create(:cat, user: @user)
   end
 
   scenario "user creates a review" do
