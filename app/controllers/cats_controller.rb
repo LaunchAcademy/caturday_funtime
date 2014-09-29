@@ -23,6 +23,7 @@ class CatsController < ApplicationController
   def show
     @cat = Cat.find(params[:id])
     @review = Review.new
+    @vote = @cat.votes.find_or_initialize_by(user: current_user)
   end
 
   def edit
@@ -51,6 +52,7 @@ class CatsController < ApplicationController
   end
 
   private
+
   def cat_params
     params.require(:cat).permit(:name, :description, :url)
   end

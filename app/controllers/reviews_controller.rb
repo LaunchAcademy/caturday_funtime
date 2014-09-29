@@ -10,7 +10,10 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to cat_path(@review.cat)
     else
-      render 'cats/show'
+      @vote = @cat.votes.find_or_initialize_by(user: current_user)
+      flash[:alert] = "fael review lol, try again wow"
+      render "cats/show"
+      # redirect_to cat_path(@review.cat)
     end
   end
 
@@ -39,10 +42,10 @@ class ReviewsController < ApplicationController
       flash[:alert] = "fael lol, try again wow"
       redirect_to cat_path(@review.cat)
     end
-   end
-
+  end
 
   private
+
   def review_params
     params.require(:review).permit(:review)
   end
