@@ -5,6 +5,11 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
 <% if @cat.user == current_user %>
 <%= link_to "Edit/Delete", edit_cat_path(@cat) %> |
 <% end %>
+<% if current_user && current_user.is_admin? %>
+<%= form_for [@cat], method: :delete do |f| %>
+  <%= f.submit "PURGE THIS SCOURGE" %>
+  <% end %> |
+<% end %>
 
 <strong> <%= @cat.vote_score || 0 %> votes </strong>
 
@@ -70,7 +75,7 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
         <br>
         <%= review.review %>
 
-        <% if current_user == review.user %><br>
+        <% if review.editable_by?(current_user) %><br>
           <%= link_to 'Edit', edit_review_path(review) %> | <%= link_to 'Delete Plz', review_path(review), method: :delete, data: { confirm: 'wow really kill dis review u monster??' } %></p>
         <% end %>
 

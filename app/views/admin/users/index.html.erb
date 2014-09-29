@@ -1,0 +1,27 @@
+
+<h2> All Users </h2>
+<div id="members">
+  <h3> plebs </h3>
+  <ul>
+    <% @members.each do |member| %>
+      <li>
+        <%= member.email %>
+        <%= form_for [:admin, member], method: :delete do |f| %>
+          <%= f.submit "Delete this user" %>
+          <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<br>
+
+<div id="admins">
+  <h3> demi-gods </h3>
+  <ul>
+    <% @admins.each do |admin| %>
+      <li>
+        <%= admin.email %>
+      </li>
+    <% end %>
+  </ul>
+</div>

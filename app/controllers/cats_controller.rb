@@ -27,11 +27,12 @@ class CatsController < ApplicationController
   end
 
   def edit
-    @cat = current_user.cats.find(params[:id])
+    @cat = Cat.authorized_find(current_user, params[:id])
   end
 
   def update
-    @cat = current_user.cats.find(params[:id])
+    @cat = Cat.authorized_find(current_user, params[:id])
+
     if @cat.update(cat_params)
       flash[:notice] = "Cat Updated"
       redirect_to cat_path
@@ -41,7 +42,8 @@ class CatsController < ApplicationController
   end
 
   def destroy
-    @cat = current_user.cats.find(params[:id])
+    @cat = Cat.authorized_find(current_user, params[:id])
+
     if @cat.destroy
       flash[:notice] = "Cat Destroyed"
       redirect_to cats_path
