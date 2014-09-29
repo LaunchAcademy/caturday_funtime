@@ -1,13 +1,11 @@
 require 'rails_helper'
 
 feature 'submit cat' do
-  before :each do
+  scenario 'user submits valid cat' do
     @user = FactoryGirl.create(:user)
 
     sign_in_as(@user)
-  end
 
-  scenario 'user submits valid cat' do
     visit "/cats/new"
 
     fill_in "Name", with: "Gangsta Cat"

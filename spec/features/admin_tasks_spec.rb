@@ -7,7 +7,7 @@ feature 'admin can manage users' do
 
   scenario 'admin visits users index' do
     visit '/admin/users'
-    expect(page).to have_content(@person.email)
+    expect(page).to have_content(@user.email)
   end
 
   scenario 'admin deletes miscreant user' do
@@ -17,15 +17,15 @@ feature 'admin can manage users' do
   end
 
   def sign_in
-    @user = User.create!(email: "foo@example.com", password: "12345678", role: 'admin')
-    @person = User.create!(email: "foo2@example.com", password: "12345678", role: 'member')
+    @user = FactoryGirl.create(:user)
+    @admin = FactoryGirl.create(:user, role: 'admin')
 
-    visit "/users/sign_in"
+    sign_in_as(@admin)
 
-    fill_in "Email", with: @user.email
-    fill_in "Password", with: @user.password
-
-    click_button "Log in"
+    @cat = FactoryGirl.create(:cat, user: @user)
+    @review = Review.create!(review: "I absolutely LOVE this cat picture",
+                            user_id: @user.id,
+                            cat_id: @cat.id)
   end
 end
 
@@ -48,19 +48,14 @@ feature 'admin can manage content' do
   end
 
   def sign_in
-    @user = User.create!(email: "foo@example.com", password: "12345678", role: 'admin')
-    @person = User.create!(email: "foo2@example.com", password: "12345678", role: 'member')
+  @user = FactoryGirl.create(:user)
+  @admin = FactoryGirl.create(:user, role: 'admin')
 
-    visit "/users/sign_in"
+  sign_in_as(@admin)
 
-    fill_in "Email", with: @user.email
-    fill_in "Password", with: @user.password
-
-    click_button "Log in"
-
-    @cat = Cat.create!(name:"cat", url:"http://www.thinkcontra.com/wp-content/uploads/2013/04/whiskey-and-cats-photo-u1-e1365195706240.jpeg", user_id: @person.id)
-    @review = Review.create!(review: "I absolutely LOVE this cat picture",
-                            user_id: @person.id,
-                            cat_id: @cat.id)
+  @cat = FactoryGirl.create(:cat, user: @user)
+  @review = Review.create!(review: "I absolutely LOVE this cat picture",
+                          user_id: @user.id,
+                          cat_id: @cat.id)
   end
 end
