@@ -1,5 +1,6 @@
 class CatsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
+  validates :description, length: { maximum: 255 }
 
   def index
     @cats = Cat.all.order(updated_at: :desc)

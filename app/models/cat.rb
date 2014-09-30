@@ -7,6 +7,7 @@ class Cat < ActiveRecord::Base
 
   validates :name, :user, presence: true
   validates :url, presence: true, uniqueness: true
+  validates :description, length: { maximum: 255 }
 
   def vote_score
     return votes.sum(:value)
