@@ -8,8 +8,8 @@ feature "cast upvotes and downvotes for cats and reviews" do
   scenario "user upvotes a cat" do
     visit cat_path(@cat)
 
-    within(".cat-vote") do
-      click_button "Upvote"
+    within("div.cat-vote") do
+      click_button "Paw up"
     end
 
     expect(@cat.vote_score).to eq(1)
@@ -18,8 +18,8 @@ feature "cast upvotes and downvotes for cats and reviews" do
   scenario "user downvotes a cat" do
     visit cat_path(@cat)
 
-    within(".cat-vote") do
-      click_button "Downvote"
+    within("div.cat-vote") do
+      click_button "Paw down"
     end
 
     expect(@cat.vote_score).to eq(-1)
@@ -30,8 +30,8 @@ feature "cast upvotes and downvotes for cats and reviews" do
 
     visit cat_path(@cat)
 
-    within(".cat-vote") do
-      click_button "Clear Vote"
+    within("div.cat-vote") do
+      click_button "Paw clear"
     end
 
     expect(@cat.vote_score).to eq(0)
@@ -41,7 +41,7 @@ feature "cast upvotes and downvotes for cats and reviews" do
     visit cat_path(@cat)
 
     within(".review-#{@review.id}-vote") do
-      click_button "Upvote"
+      click_button "Paw up"
     end
 
     expect(@review.vote_score).to eq(1)
@@ -51,7 +51,7 @@ feature "cast upvotes and downvotes for cats and reviews" do
     visit cat_path(@cat)
 
     within(".review-#{@review.id}-vote") do
-      click_button "Downvote"
+      click_button "Paw down"
     end
 
     expect(@review.vote_score).to eq(-1)
