@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
+  def editable_by?(user)
+    self == user || user.is_admin?
+  end
+
 end
