@@ -49,7 +49,7 @@ a:hover {
 }
 
 button, .button {
-  font-family: Roboto;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
   background-color: #03c383;
   padding: 8px 12px;
 }
