@@ -1,4 +1,8 @@
 class Review < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_review, against: [:review]
+  pg_search_scope :search_user, against: [:user]
+
   has_many :votes, as: :voteable
   belongs_to :cat
   belongs_to :user

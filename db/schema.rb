@@ -11,10 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140929204259) do
+ActiveRecord::Schema.define(version: 20140930175735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
+  enable_extension "fuzzystrmatch"
 
   create_table "cats", force: true do |t|
     t.string   "name",        null: false
@@ -26,6 +28,14 @@ ActiveRecord::Schema.define(version: 20140929204259) do
   end
 
   add_index "cats", ["url"], name: "index_cats_on_url", unique: true, using: :btree
+
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "reviews", force: true do |t|
     t.text     "review",     null: false
