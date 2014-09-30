@@ -33,6 +33,8 @@ group :development, :test do
   gem "rspec-rails"
   gem "capybara"
   gem "pry-rails"
+  gem "factory_girl_rails", "~> 4.0"
+  gem "launchy"
 end
 
 group :production do
@@ -53,4 +55,3 @@ end
 
 
 gem 'devise'
-

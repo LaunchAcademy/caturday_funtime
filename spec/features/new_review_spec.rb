@@ -2,16 +2,11 @@ require "rails_helper"
 
 feature "new review" do
   before :each do
-    @user = User.create!(email: "foo@example.com", password: "123456578")
+    @user = FactoryGirl.create(:user)
 
-    visit "/users/sign_in"
+    sign_in_as(@user)
 
-    fill_in "Email", with: @user.email
-    fill_in "Password", with: @user.password
-
-    click_button "Log in"
-
-    @cat = Cat.create!(name:"cat", url:"http://www.thinkcontra.com/wp-content/uploads/2013/04/whiskey-and-cats-photo-u1-e1365195706240.jpeg", user: @user)
+   @cat = FactoryGirl.create(:cat, user: @user)
   end
 
   scenario "user creates a review" do
