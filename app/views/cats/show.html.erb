@@ -37,12 +37,10 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
 
 
 <hr>
-
 <ul>
   <li> <%= image_tag(@cat.url) %> </li>
   <li> <p><strong>Description:</strong> <%= @cat.description %><p> </li>
 </ul>
-
 <hr>
 
 <%= form_for [@cat, @review] do |f| %>
@@ -74,6 +72,7 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
 <% if !@cat.reviews.empty? %>
   <% @cat.reviews.each do |review| %>
     <li>
+
       <p>
         <strong><%= review.user.email %></strong>
         at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%> |
@@ -86,7 +85,7 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
         <% end %>
 
         <% if user_signed_in? %>
-        <div class="review-<%= review.id %>-vote cat-vote">
+        <div class="review-<%= review.id %>-vote review-vote">
           <% review_vote = review.votes.find_or_initialize_by(user: current_user) %>
 
           <%= form_for [review, review_vote] do |f| %>
@@ -115,7 +114,8 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
         </div>
         <% end %>
       </p>
-      </li>
+
+    </li>
   <% end %>
 <% else %>
   <p>There are no reviews yet! Make one!</p>

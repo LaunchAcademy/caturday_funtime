@@ -9,7 +9,7 @@ feature "cast upvotes and downvotes for cats and reviews" do
     visit cat_path(@cat)
 
     within(".cat-vote") do
-      click_button "Upvote"
+      find(:xpath, "//a/img[@alt='paw_up']/..").click
     end
 
     expect(@cat.vote_score).to eq(1)
@@ -19,7 +19,7 @@ feature "cast upvotes and downvotes for cats and reviews" do
     visit cat_path(@cat)
 
     within(".cat-vote") do
-      click_button "Downvote"
+      find(:xpath, "//a/img[@alt='paw_down']/..").click
     end
 
     expect(@cat.vote_score).to eq(-1)
@@ -31,7 +31,7 @@ feature "cast upvotes and downvotes for cats and reviews" do
     visit cat_path(@cat)
 
     within(".cat-vote") do
-      click_button "Clear Vote"
+      find(:xpath, "//a/img[@alt='paw_clear']/..").click
     end
 
     expect(@cat.vote_score).to eq(0)

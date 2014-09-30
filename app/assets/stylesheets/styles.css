@@ -102,16 +102,20 @@ button:hover, .button:hover, button:active, .button:hover {
   margin: 0;
 }
 
+.alert-box.success, .alert-box.warning {
+  padding: 0.5em 0.7em;
+  font-size: 1em;
+}
+
 .alert-box.success {
   background-color: #03c383;
   border-color: #03c383;
-  padding: 0.5em 0.7em;
+
 }
 
 .alert-box.warning {
   background-color: #ed0345;
-    border-color: #ed0345;
-  padding: 0.5em 0.7em;
+  border-color: #ed0345;
 }
 
 .login {
@@ -121,5 +125,9 @@ button:hover, .button:hover, button:active, .button:hover {
 }
 
 .cat-vote form {
+  display: inline-block;
+}
+
+.review-vote form {
   display: inline-block;
 }
