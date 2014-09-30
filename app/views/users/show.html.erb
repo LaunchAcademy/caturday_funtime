@@ -1,0 +1,20 @@
+<h3><%= @user.email %></h3>
+<%= link_to 'Edit Profile', edit_user_registration_path %>
+<div id = 'profile_photo' ><%= image_tag(@user.profile_photo) %></div>
+
+<h3>Cats</h3>
+<ul>
+<% @cats.each do |cat| %>
+<li><%= link_to cat.name, cat_path(cat) %> | created at <%= cat.created_at.strftime("%l:%M %p")%> on <%= cat.created_at.strftime("%b %d, %Y")%> | <%= cat.vote_score || 0 %> Votes
+<% end %>
+</ul>
+<br>
+
+<h3>Reviews</h3>
+<ul>
+  <% @reviews.each do |review| %>
+    <li><%= link_to review.cat.name, review_path(review) %> | created at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%> | <%= review.vote_score || 0 %> Votes
+      <br><blockquote><%= review.review[0..50] %> ...</blockquote>
+    </li>
+  <% end %>
+</ul>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: [:show]
 
   resources :cats do
     resources :reviews, only: [:create]
