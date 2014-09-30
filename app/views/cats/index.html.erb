@@ -12,7 +12,7 @@
         <li>
           <p><%= link_to image_tag(cat.url), cat %></p>
           <p><strong><%= link_to cat.name, cat %></strong><br>
-          posted by <br> <%= cat.user.email %></p>
+          <%= image_tag(cat.user.profile_photo.thumb) %> <%= cat.user.email %></p>
         </li>
       <% end %>
     </ul>
