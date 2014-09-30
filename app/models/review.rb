@@ -4,6 +4,8 @@ class Review < ActiveRecord::Base
   belongs_to :user
 
   validates :review, :cat, :user, presence: true
+  validates :cat, length: { maximum: 85 }
+  validates :review, length: { maximum: 255 }
 
   def vote_score
     return votes.sum(:value)
