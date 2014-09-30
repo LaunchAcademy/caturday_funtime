@@ -2,7 +2,7 @@ class CatsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
   def index
-    @cats = Cat.all.order(updated_at: :desc)
+    @cats = Cat.all.order(created_at: :desc).page(params[:page]).per(9)
   end
 
   def new
