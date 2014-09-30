@@ -1,16 +1,10 @@
 class SearchController < ApplicationController
-  before_action :authenticate_user!
-
-
-  def create
-
-  end
 
   def index
-    @search = nil
-  end
+    @search = Cat.search_name(params[:name])
 
-  def search_params
-    params.require(:search).permit(:name)
+    if !params[:name].nil? && params[:name].empty?
+      @search = Cat.search_description(params[:description])
+    end
   end
 end
