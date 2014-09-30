@@ -77,9 +77,10 @@ button:hover, .button:hover, button:active, .button:hover {
 
 .index img {
   max-height: 200px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.index img {
+.show img {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
