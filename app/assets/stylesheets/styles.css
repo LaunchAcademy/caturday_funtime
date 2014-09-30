@@ -118,7 +118,7 @@ button:hover, .button:hover, button:active, .button:hover {
 }
 
 .alert-box.success, .alert-box.warning {
-  padding: 0.5em 0.7em;
+  padding: 0.2em 0.7em;
   font-size: 1em;
 }
 
