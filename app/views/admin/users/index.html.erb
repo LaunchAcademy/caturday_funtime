@@ -1,5 +1,7 @@
+<hr>
+<h1> All Users </h1>
+<hr>
 
-<h2> All Users </h2>
 <div id="members">
   <h3> plebs </h3>
   <ul>
@@ -7,7 +9,7 @@
       <li>
         <%= member.email %>
         <%= form_for [:admin, member], method: :delete do |f| %>
-          <%= f.submit "Delete this user" %>
+          <%= f.submit "Delete this user", class: "button radius" %>
           <% end %>
       </li>
     <% end %>

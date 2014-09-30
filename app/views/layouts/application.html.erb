@@ -10,32 +10,38 @@
 </head>
 <body>
 
-<div class="show-for-small-only tiny-nav">
+<div class="show-for-medium-down tiny-nav">
 
-  <h3>Caturday Funtime! :3</h3>
+  <h1>Caturday Funtime! :3</h1>
 
   <ul>
     <% if user_signed_in? %>
       <li>
-        <%= link_to('Logout', destroy_user_session_path, class: 'button radius tiny', :method => :delete) %>
+        <%= link_to('Logout', destroy_user_session_path, class: 'button radius', :method => :delete) %>
       </li>
       <li>
-        <%= link_to 'Submit Cat', new_cat_path, class: 'button radius tiny' %>
+        <%= link_to 'Submit Cat', new_cat_path, class: 'button radius' %>
       </li>
     <% else %>
       <li>
-        <%= link_to('Login', new_user_session_path, class: 'button radius tiny') %>
+        <%= link_to('Login', new_user_session_path, class: 'button radius') %>
       </li>
     <% end %>
       <li>
-        <%= link_to 'Cat Index', cats_path, class: 'button radius tiny' %>
+        <%= link_to 'Cat Index', cats_path, class: 'button radius' %>
       </li>
+    <% if user_signed_in? && current_user.is_admin? %>
+      <li>
+        <%= link_to 'Admin', admin_users_path, class: 'button radius' %>
+      </li>
+    <% end %>
+
     </ul>
 
 </div>
 
 <div class="container">
-  <div class="show-for-medium-up nav">
+  <div class="show-for-large-up nav">
 
 
     <%= link_to image_tag("caturday_logo.png"), root_path %>
@@ -55,6 +61,13 @@
         </li>
       <% end %>
         <li><%= link_to 'Cat Index', cats_path, class: 'button radius' %></li>
+
+      <% if user_signed_in? && current_user.is_admin? %>
+        <li>
+          <%= link_to 'Admin', admin_users_path, class: 'button radius' %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
 

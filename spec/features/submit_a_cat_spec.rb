@@ -16,7 +16,9 @@ feature 'submit cat' do
     expect(page).to have_content("Gangsta Cat")
     expect(page).to have_css("img[src='http://example.com/cat.png']")
 
-    click_link "Logout"
+    within("div.show-for-medium-down.tiny-nav") do
+      click_link "Logout"
+    end
     expect(page).to have_content("Signed out successfully.")
   end
 end
