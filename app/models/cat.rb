@@ -4,7 +4,6 @@ class Cat < ActiveRecord::Base
 
   belongs_to :user
 
-
   validates :name, :user, presence: true
   validates :url, presence: true, uniqueness: true
   validates :description, length: { maximum: 255 }
