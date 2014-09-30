@@ -59,10 +59,10 @@ feature "cast upvotes and downvotes for cats and reviews" do
 
   def sign_in
     @user = FactoryGirl.create(:user)
+    @cat = FactoryGirl.create(:cat)
 
-     sign_in_as(@user)
+    sign_in_as(@user)
 
-    @cat = Cat.create!(name:"cat", url:"http://www.thinkcontra.com/wp-content/uploads/2013/04/whiskey-and-cats-photo-u1-e1365195706240.jpeg", user: @user)
     @review = Review.create!(review: "I absolutely LOVE this cat picture",
                             user_id: @user.id,
                             cat_id: @cat.id)
