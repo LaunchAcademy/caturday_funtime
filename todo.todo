@@ -4,16 +4,24 @@ Things to work on
 CURRENT:
 --------
 
-N/A
+* Allow users to upload profile photos
+* User profile, including review posts & cats posted
+* Allow users to upload cat photos
 
 TODO:
 -----
 
-* User profile, including review posts & cats posted
+* Search for Cats
+* Email users when review is posted
+* 404 page for errors that might appear in production
 
 
 Future (if we have time):
 -------------------------
+
+* User names
+
+* Option to BAN (and not delete) users
 
 * Create categories table (tags)
 * Create categorizations table (cats can have many categories)
