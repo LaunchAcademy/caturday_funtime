@@ -18,7 +18,9 @@
     </ul>
   <% end %>
 
-<p><%= paginate @cats.page(params[:page]).per(9) %></p>
+  <hr>
+
+  <p><%= paginate @cats.page(params[:page]).per(9) %></p>
 
 </div>
 
