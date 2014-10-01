@@ -6,7 +6,11 @@ class Cat < ActiveRecord::Base
 
 
   validates :name, :user, presence: true
-  validates :url, presence: true, uniqueness: true
+  validate :url_or_upload
+
+  validates :url, uniqueness: true, if: 'url.present?'
+
+  mount_uploader :cat_photo, CatPhotoUploader
 
   def vote_score
     return votes.sum(:value)
@@ -17,6 +21,12 @@ class Cat < ActiveRecord::Base
       find(id)
     else
       where(user: user).find(id)
+    end
+  end
+
+  def url_or_upload
+    if [self.url, self.cat_photo].reject(&:blank?).size == 0
+      errors[:base] << ("Please enter either a url or upload a file.")
     end
   end
 end

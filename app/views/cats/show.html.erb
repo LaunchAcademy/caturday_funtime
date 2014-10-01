@@ -6,7 +6,7 @@
   <%= f.submit "PURGE THIS SCOURGE", class: "button radius" %>
   <% end %>
 <% end %>
-<strong><%= image_tag(@cat.user.profile_photo.thumb) %> <%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
+<strong><%= image_tag(@cat_image) %> <%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
 <% if @cat.user == current_user %>
   | <%= link_to "Edit/Delete", edit_cat_path(@cat) %>
 <% end %>
@@ -44,7 +44,7 @@
 
 <hr>
 <ul>
-  <li class="show"> <%= image_tag(@cat.url) %> </li>
+  <li class="show"><%= photo_for_cat(@cat) %></li>
   <li> <p><strong>Description:</strong> <%= @cat.description %><p> </li>
 </ul>
 <hr>

@@ -6,7 +6,8 @@ if Rails.env.test? or Rails.env.cucumber?
 end
 
 # make sure our uploader is auto-loaded
-  ProfilePhotoUploader
+ ProfilePhotoUploader
+ CatPhotoUploader
 
   # use different dirs when testing
   CarrierWave::Uploader::Base.descendants.each do |klass|
