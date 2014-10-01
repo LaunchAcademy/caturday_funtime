@@ -7,6 +7,15 @@
   <% end %>
 <% end %>
 by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
+
+<div class="tags">
+  <% if !@categories.empty? %>
+    <% @categories.each do |category| %>
+      <%= category.tag %>
+    <% end %>
+  <% end %>
+    </div>
+
 <% if @cat.user == current_user %>
   | <%= link_to "Edit/Delete", edit_cat_path(@cat) %>
 <% end %>

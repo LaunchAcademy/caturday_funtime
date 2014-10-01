@@ -21,4 +21,19 @@ class Cat < ActiveRecord::Base
       where(user: user).find(id)
     end
   end
+
+  def tag_string
+    categories.pluck(:tag).join(" ")
+  end
+
+  def tag_string=(value)
+    if !value.empty?
+      tags = value.split(' ')
+
+      tags.each do |tag|
+        category = Category.find_or_create_by(tag: tag)
+        Categorization.create!(cat_id: self.id, category_id: category.id)
+      end
+    end
+  end
 end
