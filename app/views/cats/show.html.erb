@@ -6,7 +6,7 @@
   <%= f.submit "PURGE THIS SCOURGE", class: "button radius" %>
   <% end %>
 <% end %>
-by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
+<strong><%= image_tag(@cat_image) %> <%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
 <% if @cat.user == current_user %>
   | <%= link_to "Edit/Delete", edit_cat_path(@cat) %>
 <% end %>
@@ -44,8 +44,8 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
 
 <hr>
 <ul>
-  <li class="show"> <%= image_tag(@cat.url) %> </li>
-  <li> <p><strong>Description:</strong> <% if @cat.description.empty? %>(none)<% else %><%= @cat.description %><% end %><p> </li>
+  <li class="show"><%= photo_for_cat(@cat) %></li>
+  <li> <p><strong>Description:</strong> <%= @cat.description.empty? ? "(none)" : @cat.description %><p> </li>
 </ul>
 <hr>
 
@@ -82,7 +82,7 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
     <% @cat.reviews.page(params[:page]).per(3).each do |review| %>
       <li>
         <p>
-          <strong><%= review.user.email %></strong>
+          <strong><%= image_tag(review.user.profile_photo.thumb) %> <%= review.user.email %></strong>
           at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%> |
           <strong><%= review.vote_score || 0 %> votes</strong>
           <br>

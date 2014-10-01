@@ -9,9 +9,12 @@ class Cat < ActiveRecord::Base
 
   belongs_to :user
 
+  validates :name, :user, presence: true, length: { maximum: 55 }
+  validates :description, length: { maximum: 255 }
+  validates :url, uniqueness: true, if: 'url.present?'
 
-  validates :name, :user, presence: true
-  validates :url, presence: true, uniqueness: true
+  validate :url_or_upload
+  mount_uploader :cat_photo, CatPhotoUploader
 
   def vote_score
     return votes.sum(:value)
@@ -22,6 +25,16 @@ class Cat < ActiveRecord::Base
       find(id)
     else
       where(user: user).find(id)
+    end
+  end
+
+  def url_or_upload
+    if url.blank? && cat_photo.blank?
+      errors[:base] << "Please enter either a url or upload a file."
+    end
+
+    if url.present? && cat_photo.present?
+      errors[:base] << "too many cats"
     end
   end
 end
