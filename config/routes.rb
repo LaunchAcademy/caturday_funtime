@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :emails
+
   devise_for :users
 
   resources :cats do
