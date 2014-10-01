@@ -2,7 +2,7 @@ body {
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 20px;
   background-color: #f0f0f0;
-  padding: 10px;
+  margin-top: 10px;
 }
 
 body p {
@@ -17,10 +17,15 @@ h1, h2, h3 {
 }
 
 hr {
+  margin: 10px 0;
   border: 0;
   height: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+label {
+  margin-bottom: -1.5em;
 }
 
 input[type="text"], textarea {
@@ -63,6 +68,7 @@ button:hover, .button:hover, button:active, .button:hover {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0;
+  margin-bottom: 10px;
 }
 
 .container ul {
@@ -145,4 +151,8 @@ button:hover, .button:hover, button:active, .button:hover {
 
 .review-vote form {
   display: inline-block;
+}
+
+.pagination {
+  margin-bottom: 20px;
 }
