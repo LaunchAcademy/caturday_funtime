@@ -11,7 +11,7 @@ feature 'submit cat' do
     visit "/cats/new"
 
     fill_in "Name", with: "Gangsta Cat"
-    fill_in "or image URL", with: "http://example.com/cat.png"
+    fill_in "URL or Choose File", with: "http://example.com/cat.png"
     fill_in "Description", with: "The fanciest cat I've seen all day."
     click_button "Create Cat"
 

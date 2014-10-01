@@ -25,9 +25,14 @@
   <%= f.text_area :description %>
 </p>
 
+
 <p>
-  <%= f.file_field :cat_photo %><%= f.label :url, "or image URL" %>
+  <%= f.label :url, "URL or Choose File" %><br>
   <%= f.text_field :url %>
+</p>
+
+<p>
+  <%= f.file_field :cat_photo %>
 </p>
 
 <p>

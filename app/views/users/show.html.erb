@@ -9,11 +9,12 @@
  <% if @user.cats.empty? %>
     <p>No cats yet!</p>
   <% else %>
-    <% @user.cats.each do |cat| %>
+    <% @user_cats.page(params[:page]).per(10).each do |cat| %>
       <li><%= link_to cat.name, cat_path(cat) %> | created at <%= cat.created_at.strftime("%l:%M %p")%> on <%= cat.created_at.strftime("%b %d, %Y")%> | <%= cat.vote_score || 0 %> Votes
     <% end %>
   <% end %>
 </ul>
+<%= paginate @user.cats.page(params[:page]).per(10) %>
 <br>
 
 <h3>Reviews</h3>
@@ -21,10 +22,11 @@
   <% if @user.reviews.empty? %>
     <p>No reviews yet!</p>
   <% else %>
-    <% @user.reviews.each do |review| %>
+    <% @user_reviews.page(params[:page]).per(5).each do |review| %>
       <li><%= link_to review.cat.name, cat_path(review.cat) %> | created at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%> | <%= review.vote_score || 0 %> Votes
         <br><blockquote><%= review.review[0..50] %> ...</blockquote>
       </li>
     <% end %>
   <% end %>
+<%= paginate @user.reviews.page(params[:page]).per(5) %>
 </ul>
