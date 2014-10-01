@@ -14,7 +14,6 @@ class CatsController < ApplicationController
   def create
     @cat = Cat.new(cat_params)
     @cat.user = current_user
-    @cat.cat_photo = params[:file]
 
     if @cat.save
       redirect_to cats_path

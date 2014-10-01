@@ -24,8 +24,12 @@ class Cat < ActiveRecord::Base
   end
 
   def url_or_upload
-    if [self.url, self.cat_photo].reject(&:blank?).size == 0
-      errors[:base] << ("Please enter either a url or upload a file.")
+    if url.blank? && cat_photo.blank?
+      errors[:base] << "Please enter either a url or upload a file."
+    end
+
+    if url.present? && cat_photo.present?
+      errors[:base] << "too many cats"
     end
   end
 end
