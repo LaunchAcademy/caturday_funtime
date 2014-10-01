@@ -20,6 +20,9 @@
     <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
       <%= f.password_field :current_password, autocomplete: "off" %></div>
 
+    <div><%= f.label "Upload Profile Photo" %><br/>
+    <%= f.file_field :profile_photo %></div>
+
     <div><%= f.submit "Update", class: "button radius" %></div>
   <% end %>
 
