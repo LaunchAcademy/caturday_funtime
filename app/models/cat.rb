@@ -1,6 +1,8 @@
 class Cat < ActiveRecord::Base
   has_many :reviews, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :votes, as: :voteable
+  has_many :categorizations
+  has_many :categories, through: :categorizations
 
   belongs_to :user
 
