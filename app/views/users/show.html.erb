@@ -6,10 +6,10 @@
 
 <h3>Cats</h3>
 <ul>
- <% if @cats.empty? %>
+ <% if @user.cats.empty? %>
     <p>No cats yet!</p>
   <% else %>
-    <% @cats.each do |cat| %>
+    <% @user.cats.each do |cat| %>
       <li><%= link_to cat.name, cat_path(cat) %> | created at <%= cat.created_at.strftime("%l:%M %p")%> on <%= cat.created_at.strftime("%b %d, %Y")%> | <%= cat.vote_score || 0 %> Votes
     <% end %>
   <% end %>
@@ -18,10 +18,10 @@
 
 <h3>Reviews</h3>
 <ul>
-  <% if @reviews.empty? %>
+  <% if @user.reviews.empty? %>
     <p>No reviews yet!</p>
   <% else %>
-    <% @reviews.each do |review| %>
+    <% @user.reviews.each do |review| %>
       <li><%= link_to review.cat.name, cat_path(review.cat) %> | created at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%> | <%= review.vote_score || 0 %> Votes
         <br><blockquote><%= review.review[0..50] %> ...</blockquote>
       </li>
