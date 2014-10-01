@@ -3,8 +3,8 @@ class SearchController < ApplicationController
   def index
     @search = Cat.search_name(params[:name])
 
-    if !params[:name].nil? && params[:name].empty?
-      @search = Cat.search_description(params[:description])
+    if @search.empty?
+      @search = Cat.search_description(params[:name])
     end
   end
 end
