@@ -1,12 +1,12 @@
 require "rails_helper"
 
-feature "new review" do
+feature "new review", focus: true do
   before :each do
     @user = FactoryGirl.create(:user)
 
     sign_in_as(@user)
 
-   @cat = FactoryGirl.create(:cat, user: @user)
+    @cat = FactoryGirl.create(:cat)
   end
 
   scenario "user creates a review" do
@@ -16,6 +16,7 @@ feature "new review" do
     click_button "Create Review"
 
     expect(page).to have_content("I absolutely LOVE this cat picture")
+    expect(ActionMailer::Base.deliveries.count).to eq(1)
   end
 
   scenario "user submits an empty form" do

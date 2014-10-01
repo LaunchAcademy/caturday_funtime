@@ -1,0 +1,11 @@
+<%= @reviewer.email %> commented on your submission for <%= @cat.name %> on <%= format_datetime(@review.created_at) %>.
+
+============================================================
+
+Review body:
+
+<%= @review.review %>
+
+============================================================
+
+Link: <%= "caturday-funtime.herokuapp.com/cats/#{@cat.id}" %>

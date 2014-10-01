@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user pages through cats and reviews', focus: true do
+feature 'user pages through cats and reviews' do
   before :each do
     user = FactoryGirl.create(:user)
     modern_cats = FactoryGirl.create_list(:cat, CatsController::CATS_PER_PAGE)

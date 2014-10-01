@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
+      ReviewMailer.new_review(@review).deliver
       redirect_to cat_path(@review.cat)
     else
       @vote = @cat.votes.find_or_initialize_by(user: current_user)
