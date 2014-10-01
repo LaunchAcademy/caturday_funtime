@@ -45,7 +45,7 @@
 <hr>
 <ul>
   <li class="show"> <%= image_tag(@cat.url) %> </li>
-  <li> <p><strong>Description:</strong> <%= @cat.description %><p> </li>
+  <li> <p><strong>Description:</strong> <%= @cat.description.empty? ? "(none)" : @cat.description %><p> </li>
 </ul>
 <hr>
 
@@ -79,7 +79,7 @@
 
 <ul>
   <% if !@cat.reviews.empty? %>
-    <% @cat.reviews.each do |review| %>
+    <% @cat.reviews.page(params[:page]).per(3).each do |review| %>
       <li>
         <p>
           <strong><%= image_tag(review.user.profile_photo.thumb) %> <%= review.user.email %></strong>
@@ -129,5 +129,7 @@
     <p>There are no reviews yet! Make one!</p>
   <% end %>
 </ul>
+
+<p><%= paginate @cat.reviews.page(params[:page]).per(3) %></p>
 
 <%= link_to 'Back to Cats', cats_path %>
