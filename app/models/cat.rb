@@ -1,4 +1,9 @@
 class Cat < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_name, against: [:name]
+  pg_search_scope :search_description, against: [:description]
+  pg_search_scope :search_user, against: [:user]
+
   has_many :reviews, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :votes, as: :voteable
 
