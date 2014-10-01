@@ -12,4 +12,8 @@ FactoryGirl.define do
 
     user
   end
+
+  factory :review do
+    sequence(:review) { |n| "Cute cat #{n}" }
+  end
 end
