@@ -10,13 +10,6 @@ feature 'user submits profile photo' do
     Rails.root.join("spec/data/cat-milk.jpg")
   end
 
-#   scenario 'user views their user profile and sees a photo' do
-#     visit user_path(@user)
-
-# save_and_open_page
-#     expect(page).to have_css("img[src=\"spec/data/cat-milk.jpg\"]")
-#   end
-
   scenario 'user adds a profile photo to an existing account then views the photo on their account' do
     visit 'users/edit'
 
