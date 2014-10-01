@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "new review", focus: true do
+feature "new review" do
   before :each do
     @user = FactoryGirl.create(:user)
 
