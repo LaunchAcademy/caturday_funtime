@@ -8,7 +8,7 @@ feature "Users search for cat" do
   scenario "guest looks for a specific cat" do
     visit search_index_path
 
-    fill_in "Search by name", with: "Bojangles"
+    fill_in "Search by name or description", with: "Bojangles"
 
     click_button "Search"
 
@@ -18,7 +18,7 @@ feature "Users search for cat" do
   scenario "guest searches by description" do
     visit search_index_path
 
-    fill_in "Search by description", with: "Lil"
+    fill_in "Search by name or description:", with: "Lil"
 
     click_button "Search"
 
