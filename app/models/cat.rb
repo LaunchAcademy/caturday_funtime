@@ -23,16 +23,27 @@ class Cat < ActiveRecord::Base
   end
 
   def tag_string
-    categories.pluck(:tag).join(" ")
+    self.categories.pluck(:tag).join(" ")
   end
 
   def tag_string=(value)
+    clear_existing
+
     if !value.empty?
       tags = value.split(' ')
-
       tags.each do |tag|
         category = Category.find_or_create_by(tag: tag)
         Categorization.create!(cat_id: self.id, category_id: category.id)
+      end
+    end
+  end
+
+  def clear_existing
+    former_tags = Categorization.where(cat_id: self.id)
+
+    if former_tags
+      former_tags.each do |tag|
+        tag.destroy
       end
     end
   end
