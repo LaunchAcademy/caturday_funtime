@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :destroy]
   end
 
+  resources :categories, only: [:index, :show]
+
   root "cats#index"
 end

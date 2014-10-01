@@ -1,0 +1,10 @@
+<h2> CATegoriez <3 </h2>
+
+<ul>
+  <% @categories.each do |tag| %>
+  <li>
+    <%= link_to tag.tag, category_path(tag) %> - <%= tag.cats.count %> <%= tag.tag %> catz!
+  </li>
+  <% end %>
+
+</ul>
