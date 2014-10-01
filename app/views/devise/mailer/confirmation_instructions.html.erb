@@ -1,7 +1,7 @@
 <div class="login">
-  <p>Welcome <%= @email %>!</p>
+  <p>Greetings human,</p>
 
-  <p>You can confirm your account email through the link below:</p>
+  <p>Please click on the fancy text below to tell us you're a real human with a real email and not a silly troll under a bridge looking to post pictures of dogs or other bad things:</p>
 
   <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
 </div>

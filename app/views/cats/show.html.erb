@@ -55,7 +55,7 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
 <hr>
 <ul>
   <li class="show"> <%= image_tag(@cat.url) %> </li>
-  <li> <p><strong>Description:</strong> <%= @cat.description %><p> </li>
+  <li> <p><strong>Description:</strong> <%= @cat.description.empty? ? "(none)" : @cat.description %><p> </li>
 </ul>
 <hr>
 
@@ -89,7 +89,7 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
 
 <ul>
   <% if !@cat.reviews.empty? %>
-    <% @cat.reviews.each do |review| %>
+    <% @cat.reviews.page(params[:page]).per(3).each do |review| %>
       <li>
         <p>
           <strong><%= review.user.email %></strong>
@@ -139,5 +139,7 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
     <p>There are no reviews yet! Make one!</p>
   <% end %>
 </ul>
+
+<p><%= paginate @cat.reviews.page(params[:page]).per(3) %></p>
 
 <%= link_to 'Back to Cats', cats_path %>
