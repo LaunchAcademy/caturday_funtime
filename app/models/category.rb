@@ -4,7 +4,6 @@ class Category < ActiveRecord::Base
 
   validates :tag, uniqueness: true
 
-
     def self.authorized_find(user, id)
       if user.is_admin?
         find(id)

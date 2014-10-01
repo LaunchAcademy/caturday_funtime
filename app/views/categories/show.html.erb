@@ -1,6 +1,7 @@
-<h2> <%= @category.tag %></h2>
+<div class="index">
+  <h1> <%= @category.tag %></h1>
 
-<ul>
+<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
   <% @cats.each do |cat| %>
     <li>
       <p><%= link_to image_tag(cat.url), cat %></p>
@@ -9,6 +10,7 @@
     </li>
   <% end %>
 </ul>
+</div>
 
 <%= link_to "Back to all cats", cats_path %> |
 <%= link_to "View all categories", categories_path %>
