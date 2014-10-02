@@ -1,13 +1,10 @@
 Things to work on
 =================
-
 * re-do the edit for admin on users
 
-
+=======
 CURRENT:
 --------
-=======
-
 * 404 page for errors that might appear in production
 * CLEAN UP TESTS && rewrite old tests to include new features
 * add 'notify admin' feature for inappropriate content
@@ -15,6 +12,7 @@ CURRENT:
 * ad banner
 * cat votes by highest and time
 
+=======
 
 Future (if we have time):
 -------------------------

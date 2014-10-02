@@ -22,6 +22,7 @@
 
 <div class="cat-vote user-thumb">
   <%= image_tag(@cat_image) %> by <strong><%= link_to @cat.user.name, user_path(@cat.user) %></strong><br>at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
+
   <% if @cat.user == current_user %>
     | <%= link_to "Edit/Delete", edit_cat_path(@cat) %>
   <% end %>
