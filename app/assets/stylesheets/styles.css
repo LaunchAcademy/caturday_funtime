@@ -164,10 +164,12 @@ button:hover, .button:hover, button:active, .button:hover {
   display: inline-block;
 }
 
-.cat-vote img {
+.user-thumb img {
   vertical-align: text-top;
   float:left;
   margin-right: 10px;
+  max-width: 50px;
+  max-height: 50px;
 }
 
 .review-vote form {
