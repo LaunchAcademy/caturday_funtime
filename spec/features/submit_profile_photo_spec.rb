@@ -10,7 +10,7 @@ feature 'user submits profile photo' do
     Rails.root.join("spec/data/cat-milk.jpg")
   end
 
-  scenario 'user adds a profile photo to an existing account then views the photo on their account' do
+  scenario 'user adds profile photo to an existing account' do
     visit 'users/edit'
 
     fill_in "Current password", with: "12345678"
@@ -25,5 +25,4 @@ feature 'user submits profile photo' do
     expect(page).to have_css("img[alt=\"Cat milk\"]")
 
   end
-
 end

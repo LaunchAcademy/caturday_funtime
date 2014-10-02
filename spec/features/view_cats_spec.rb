@@ -19,7 +19,7 @@ feature "view cat" do
     @cat = FactoryGirl.create(:cat, user: @user)
 
     visit cat_path(@cat)
-      expect(page).to have_content(@cat.name)
-      expect(page).to have_css("img[src=\"#{@cat.url}\"]")
+    expect(page).to have_content(@cat.name)
+    expect(page).to have_css("img[src=\"#{@cat.url}\"]")
   end
 end

@@ -7,13 +7,15 @@ feature "view categories" do
 
   scenario "list categories on index page" do
     visit categories_path
-      expect(page).to have_content("fluffy")
-      expect(page).to have_content("snoozeball")
-      expect(page).to have_content("d'awww")
+
+    expect(page).to have_content("fluffy")
+    expect(page).to have_content("snoozeball")
+    expect(page).to have_content("d'awww")
 
     click_link("fluffy")
-      expect(page).to have_content(@first_cat.name)
-      expect(page).to have_content(@second_cat.name)
+
+    expect(page).to have_content(@first_cat.name)
+    expect(page).to have_content(@second_cat.name)
   end
 
   def make_categories

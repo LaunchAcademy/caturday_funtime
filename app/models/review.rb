@@ -12,7 +12,7 @@ class Review < ActiveRecord::Base
   validates :review, length: { maximum: 255 }
 
   def vote_score
-    return votes.sum(:value)
+    votes.sum(:value)
   end
 
   def editable_by?(user)

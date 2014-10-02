@@ -18,5 +18,4 @@ class User < ActiveRecord::Base
   def editable_by?(user)
     self == user || user.is_admin?
   end
-
 end

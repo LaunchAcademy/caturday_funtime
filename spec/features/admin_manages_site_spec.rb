@@ -24,8 +24,8 @@ feature 'admin can manage users' do
 
     @cat = FactoryGirl.create(:cat, user: @user)
     @review = Review.create!(review: "I absolutely LOVE this cat picture",
-                            user_id: @user.id,
-                            cat_id: @cat.id)
+                             user_id: @user.id,
+                             cat_id: @cat.id)
   end
 end
 
@@ -55,14 +55,14 @@ feature 'admin can manage content' do
   end
 
   def sign_in
-  @user = FactoryGirl.create(:user)
-  @admin = FactoryGirl.create(:user, role: 'admin')
-  sign_in_as(@admin)
+    @user = FactoryGirl.create(:user)
+    @admin = FactoryGirl.create(:user, role: 'admin')
+    sign_in_as(@admin)
 
-  @cat = FactoryGirl.create(:cat, user: @user)
-  category = Category.create(tag: "scandalz")
-  @review = Review.create!(review: "I absolutely LOVE this cat picture",
-                          user_id: @user.id,
-                          cat_id: @cat.id)
+    @cat = FactoryGirl.create(:cat, user: @user)
+    Category.create(tag: "scandalz")
+    @review = Review.create!(review: "I absolutely LOVE this cat picture",
+                             user_id: @user.id,
+                             cat_id: @cat.id)
   end
 end

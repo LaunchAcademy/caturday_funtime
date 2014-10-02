@@ -19,7 +19,7 @@ class Cat < ActiveRecord::Base
   mount_uploader :cat_photo, CatPhotoUploader
 
   def vote_score
-    return votes.sum(:value)
+    votes.sum(:value)
   end
 
   def self.authorized_find(user, id)
@@ -31,7 +31,7 @@ class Cat < ActiveRecord::Base
   end
 
   def tag_string
-    self.categories.pluck(:tag).join(" ")
+    categories.pluck(:tag).join(" ")
   end
 
   def tag_string=(value)

@@ -9,7 +9,6 @@ feature "edit and delete reviews" do
     visit cat_path(@cat)
 
     click_link "Edit"
-
     fill_in "Edit your review:", with: "I totes luv this cat."
     click_button "Update Review"
 
@@ -17,10 +16,9 @@ feature "edit and delete reviews" do
   end
 
   scenario "user enters and empty form when editing a review" do
-   visit cat_path(@cat)
+    visit cat_path(@cat)
 
     click_link "Edit"
-
     fill_in "Edit your review:", with: ""
     click_button "Update Review"
 
@@ -43,7 +41,7 @@ feature "edit and delete reviews" do
 
     @cat = FactoryGirl.create(:cat, user: @user)
     @review = Review.create!(review: "I absolutely LOVE this cat picture",
-                            user_id: @user.id,
-                            cat_id: @cat.id)
+                             user_id: @user.id,
+                             cat_id: @cat.id)
   end
 end

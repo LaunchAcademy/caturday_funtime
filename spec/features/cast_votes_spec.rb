@@ -60,11 +60,10 @@ feature "cast upvotes and downvotes for cats and reviews" do
   def sign_in
     @user = FactoryGirl.create(:user)
     @cat = FactoryGirl.create(:cat)
-
     sign_in_as(@user)
 
     @review = Review.create!(review: "I absolutely LOVE this cat picture",
-                            user_id: @user.id,
-                            cat_id: @cat.id)
+                             user_id: @user.id,
+                             cat_id: @cat.id)
   end
 end

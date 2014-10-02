@@ -6,7 +6,7 @@ feature "new review" do
 
     sign_in_as(@user)
 
-   @cat = FactoryGirl.create(:cat, user: @user)
+    @cat = FactoryGirl.create(:cat, user: @user)
   end
 
   scenario "user creates a review" do

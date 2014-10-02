@@ -4,7 +4,7 @@ class CatsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
   def index
-    @cats = Cat.all.order(created_at: :desc).page(params[:page]).per(CATS_PER_PAGE)
+    @cats = Cat.order(created_at: :desc).page(params[:page]).per(CATS_PER_PAGE)
   end
 
   def new
@@ -59,6 +59,10 @@ class CatsController < ApplicationController
   private
 
   def cat_params
-    params.require(:cat).permit(:name, :description, :url, :tag_string, :cat_photo)
+    params.require(:cat).permit(:name,
+                                :description,
+                                :url,
+                                :tag_string,
+                                :cat_photo)
   end
 end
