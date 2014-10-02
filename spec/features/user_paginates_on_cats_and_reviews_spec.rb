@@ -8,14 +8,12 @@ feature 'user pages through cats and reviews' do
 
   scenario 'user only sees new cats' do
     visit cats_path
-    save_and_open_page
     expect(page).to_not have_content(@old_cat.name)
   end
 
   scenario 'user views 2nd page and sees older cats' do
     visit cats_path
     click_link "Next"
-    save_and_open_page
     expect(page).to have_content(@old_cat.name)
   end
 
