@@ -21,7 +21,8 @@
 <% end %>
 
 <div class="cat-vote user-thumb">
-  <%= image_tag(@cat_image) %> by <strong><%= link_to @cat.user.email, user_path(@cat.user) %></strong><br>at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
+  <%= image_tag(@cat_image) %> by <strong><%= link_to @cat.user.name, user_path(@cat.user) %></strong><br>at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
+
   <% if @cat.user == current_user %>
     | <%= link_to "Edit/Delete", edit_cat_path(@cat) %>
   <% end %>
@@ -96,7 +97,7 @@
   <% if !@cat.reviews.empty? %>
     <% @cat.reviews.page(params[:page]).per(3).each do |review| %>
       <li>
-          <strong class="user-thumb"><%= image_tag(review.user.profile_photo.thumb) %> <%= link_to review.user.email, user_path(review.user) %></strong><br>
+          <strong class="user-thumb"><%= image_tag(review.user.profile_photo.thumb) %> <%= link_to review.user.name, user_path(review.user) %></strong><br>
           at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%>
 
           <% if user_signed_in? && review.editable_by?(current_user) %>

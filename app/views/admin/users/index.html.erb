@@ -2,28 +2,26 @@
 <h1> All Users </h1>
 <hr>
 
-<div id="members">
-  <h3> plebs </h3>
+<div id="admins">
+  <h3> demi-gods </h3>
   <ul>
-    <% @members.each do |member| %>
+    <% @admins.order(email: :desc).each do |admin| %>
       <li>
-        <%=member.name %> (<%= member.email %>)
-        <%= form_for [:admin, member], method: :delete do |f| %>
-          <%= f.submit "Delete this user", class: "button radius" %>
-          <% end %>
+        <%= link_to admin.name, user_path(admin) %> | <%= admin.email %>
       </li>
     <% end %>
   </ul>
 </div>
 <br>
-
-<div id="admins">
-  <h3> demi-gods </h3>
+<div id="members">
+  <h3> plebs </h3>
   <ul>
-    <% @admins.each do |admin| %>
+    <% @members.order(created_at: :desc).page(params[:page]).per(20).each do |member| %>
       <li>
-        <%=admin.name %> (<%= admin.email %>)
+        <%= link_to member.name, user_path(member) %> | <%= member.email %>
+        <%= link_to 'Delete this loser', admin_user_path(member), method: :delete%>
       </li>
     <% end %>
   </ul>
 </div>
+<%= paginate @members.page(params[:page]).per(20) %>
