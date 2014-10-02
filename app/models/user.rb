@@ -12,4 +12,11 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+
+  mount_uploader :profile_photo, ProfilePhotoUploader
+
+  def editable_by?(user)
+    self == user || user.is_admin?
+  end
+
 end

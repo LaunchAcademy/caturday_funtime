@@ -13,7 +13,7 @@ feature 'edit cat' do
     visit edit_cat_path(@cat)
 
     fill_in "Name", with: "Gangsta Cat"
-    fill_in "Url", with: "http://example.com/cat.png"
+    fill_in "URL or Choose File", with: "http://example.com/cat.png"
     fill_in "Description", with: "The fanciest cat I've seen all day."
     click_button "Update Cat"
 
@@ -25,11 +25,11 @@ feature 'edit cat' do
     visit edit_cat_path(@cat)
 
     fill_in "Name", with: ""
-    fill_in "Url", with: ""
+    fill_in "URL or Choose File", with: ""
     fill_in "Description", with: ""
     click_button "Update Cat"
 
     expect(page).to have_content("Name can't be blank")
-    expect(page).to have_content("Url can't be blank")
+    expect(page).to have_content("Please enter either a url or upload a file.")
   end
 end

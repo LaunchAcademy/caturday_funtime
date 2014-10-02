@@ -4,6 +4,8 @@ ruby '2.0.0'
 
 gem 'unicorn'
 gem 'kaminari'
+gem 'pg_search'
+gem 'fog'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
@@ -36,12 +38,16 @@ group :development, :test do
   gem "pry-rails"
   gem "factory_girl_rails", "~> 4.0"
   gem "launchy"
+  gem "dotenv-rails"
 end
 
 group :production do
   gem 'rails_12factor'
 end
 
+
+gem 'carrierwave'
+gem 'mini_magick'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
