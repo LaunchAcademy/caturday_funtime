@@ -1,21 +1,17 @@
 Things to work on
 =================
 
-CURRENT:
---------
+* Allow users to upload profile photos
+* User profile, including review posts & cats posted
+* Allow users to upload cat photos
 * Search for Cats
 * Email users when review is posted
 * 404 page for errors that might appear in production
-
-TODO:
------
-
+* CLEAN UP TESTS && rewrite old tests to include new features
 * add 'notify admin' feature for inappropriate content
-* layout of users page
+* layout of users index page
   - admin listed above users
   - username links to profile (delete from there)
-
-
 
 Future (if we have time):
 -------------------------

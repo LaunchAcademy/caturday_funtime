@@ -1,0 +1,16 @@
+<div class="index">
+  <h1> <%= @category.tag %></h1>
+
+<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+  <% @cats.each do |cat| %>
+    <li>
+      <p><%= link_to image_tag(cat.url), cat %></p>
+      <p><strong><%= link_to cat.name, cat %></strong><br>
+      posted by <br> <%= cat.user.email %></p>
+    </li>
+  <% end %>
+</ul>
+</div>
+
+<%= link_to "Back to all cats", cats_path %> |
+<%= link_to "View all categories", categories_path %>

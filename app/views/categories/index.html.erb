@@ -1,0 +1,12 @@
+<h2> CATegoriez <3 </h2>
+
+<ul>
+  <% @categories.each do |tag| %>
+  <li>
+    <%= link_to tag.tag, category_path(tag) %> - <%= tag.cats.count %> <%= tag.tag %> catz!
+    <% if current_user && current_user.is_admin? %>
+      <%= link_to "Stamp out this pestilence!", category_path(tag), method: :delete %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
