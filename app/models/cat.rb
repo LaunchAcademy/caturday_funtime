@@ -53,6 +53,9 @@ class Cat < ActiveRecord::Base
       former_tags.each do |tag|
         tag.destroy
       end
+    end
+  end
+
 
   def url_or_upload
     if url.blank? && cat_photo.blank?
