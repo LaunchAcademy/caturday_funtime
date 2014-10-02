@@ -14,6 +14,7 @@ class CatsController < ApplicationController
   def create
     @cat = Cat.new(cat_params)
     @cat.user = current_user
+
     if @cat.save
       @cat.tag_string=(cat_params[:tag_string])
       redirect_to cat_path(@cat)
@@ -24,7 +25,6 @@ class CatsController < ApplicationController
 
   def show
     @cat = Cat.find(params[:id])
-    @categories = @cat.categories
     @cat_image = @cat.user.profile_photo.thumb
     @review = Review.new
     @vote = @cat.votes.find_or_initialize_by(user: current_user)

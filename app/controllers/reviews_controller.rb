@@ -6,7 +6,6 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.cat = @cat
     @review.user = current_user
-    @categories = @cat.categories
 
     if @review.save
       redirect_to cat_path(@review.cat)

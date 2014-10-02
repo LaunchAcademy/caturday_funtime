@@ -12,8 +12,8 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
 
 <div class="tags">
   Tags:
-  <% if !@categories.empty? %>
-    <% @categories.each do |category| %>
+  <% if !@cat.categories.empty? %>
+    <% @cat.categories.each do |category| %>
       <%= link_to category.tag, category_path(category) %>
     <% end %>
   <% end %>
@@ -144,7 +144,7 @@ by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%
   <% else %>
     <p>There are no reviews yet! Make one!</p>
   <% end %>
-</ul> 
+</ul>
 
 <p><%= paginate @cat.reviews.page(params[:page]).per(3) %></p>
 
