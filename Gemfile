@@ -37,6 +37,7 @@ group :development, :test do
   gem "pry-rails"
   gem "factory_girl_rails", "~> 4.0"
   gem "launchy"
+  gem "nyan-cat-formatter"
 end
 
 group :production do
