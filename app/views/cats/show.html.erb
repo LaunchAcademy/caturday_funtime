@@ -8,6 +8,21 @@
   <% end %>
 <% end %>
 
+by <strong><%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
+
+<div class="tags">
+  Tags:
+  <% if !@cat.categories.empty? %>
+    <% @cat.categories.each do |category| %>
+      <%= link_to category.tag, category_path(category) %>
+    <% end %>
+  <% end %>
+    </div>
+
+<% if @cat.user == current_user %>
+  | <%= link_to "Edit/Delete", edit_cat_path(@cat) %>
+<% end %>
+
 <div class="cat-vote">
   <%= image_tag(@cat_image) %> by <strong><%= @cat.user.email %></strong><br>at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
   <% if @cat.user == current_user %>
