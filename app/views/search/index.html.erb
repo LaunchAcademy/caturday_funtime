@@ -1,0 +1,30 @@
+<h1>Cat Search</h1>
+
+<p>
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:name, "Search by name or description:") %>
+  <%= text_field_tag(:name, "", autofocus: true) %>
+  <%= submit_tag("Search", class: "button radius") %>
+<% end %>
+</p>
+
+<div class="index">
+  <% if @search.empty? %>
+      <p>No cats found! =(⦿⽘⦿)= </p>
+    <% else %>
+      <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+        <% @search.each do |cat| %>
+          <li>
+            <div class="index-image"><%= link_to photo_for_cat(cat), cat %></div><br>
+            <strong><%= link_to cat.name, cat %></strong><br>
+            <strong><%= cat.vote_score %> Votes</strong><br>
+            <%= cat.user.email %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+  <p><%= paginate @search %></p>
+</div>
+
+

@@ -47,13 +47,20 @@ feature 'admin can manage content' do
     expect(@cat.reviews.count).to eq(0)
   end
 
+  scenario 'admin deletes scandalous cat tag' do
+    visit categories_path
+    click_link "Stamp out this pestilence!"
+    expect(page).to have_content ("pestilence stamped out")
+    expect(@categories).to eq(nil)
+  end
+
   def sign_in
   @user = FactoryGirl.create(:user)
   @admin = FactoryGirl.create(:user, role: 'admin')
-
   sign_in_as(@admin)
 
   @cat = FactoryGirl.create(:cat, user: @user)
+  category = Category.create(tag: "scandalz")
   @review = Review.create!(review: "I absolutely LOVE this cat picture",
                           user_id: @user.id,
                           cat_id: @cat.id)

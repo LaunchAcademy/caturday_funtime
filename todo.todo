@@ -3,17 +3,10 @@ Things to work on
 
 CURRENT:
 --------
+
 * 404 page for errors that might appear in production
-
-TODO:
------
-
+* CLEAN UP TESTS && rewrite old tests to include new features
 * add 'notify admin' feature for inappropriate content
-* layout of users page
-  - admin listed above users
-  - username links to profile (delete from there)
-
-
 
 Future (if we have time):
 -------------------------
