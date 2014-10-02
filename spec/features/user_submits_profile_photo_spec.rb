@@ -15,7 +15,6 @@ feature 'user submits profile photo' do
 
     fill_in "Current password", with: "12345678"
     attach_file "user_profile_photo", sample_photo
-    # click_button "Choose file"
     click_button "Update"
 
     expect(page).to have_content("Your account has been updated successfully.")

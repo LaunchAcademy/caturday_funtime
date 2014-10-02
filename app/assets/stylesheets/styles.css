@@ -1,12 +1,12 @@
 body {
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   background-color: #f0f0f0;
   margin-top: 10px;
 }
 
 body p {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 h1, h2, h3 {
@@ -25,7 +25,8 @@ hr {
 }
 
 label {
-  margin-bottom: -1.5em;
+  margin-top: 1em;
+  font-size: 1em;
 }
 
 input[type="text"], textarea {
@@ -37,10 +38,13 @@ input[type="text"], textarea {
   padding: 5px;
 }
 
+input[type="file"] {
+  font-size: 0.7em;
+}
+
 textarea {
   height: 10em;
   border-radius: 4px;
-  padding: 5px;
 }
 
 a {
@@ -57,6 +61,7 @@ button, .button {
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
   background-color: #03c383;
   padding: 8px 12px;
+  font-size: 0.8em;
 }
 
 button:hover, .button:hover, button:active, .button:hover {
@@ -86,7 +91,12 @@ button:hover, .button:hover, button:active, .button:hover {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.index-image {
+  height: 180px;
+}
+
 .show img {
+  margin-top: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -145,8 +155,21 @@ button:hover, .button:hover, button:active, .button:hover {
   margin: 0 auto;
 }
 
+.cat-vote {
+  line-height: 100%;
+  margin-bottom: 30px;
+}
+
 .cat-vote form {
   display: inline-block;
+}
+
+.user-thumb img {
+  vertical-align: text-top;
+  float:left;
+  margin-right: 10px;
+  max-width: 50px;
+  max-height: 50px;
 }
 
 .review-vote form {

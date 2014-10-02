@@ -1,7 +1,7 @@
 <div class="index">
 
   <hr>
-  <h1>Cat Index:</h1>
+  <h1>Recently Added Cats:</h1>
   <hr>
 
   <% if @cats.empty? %>
@@ -12,7 +12,7 @@
         <li>
           <p><%= link_to photo_for_cat(cat), cat %></p>
           <p><strong><%= link_to cat.name, cat %></strong><br>
-          <%= image_tag(cat.user.profile_photo.thumb) %> <%= link_to cat.user.email, user_path(cat.user) %></p>
+          <%= link_to cat.user.name, user_path(cat.user) %></p>
         </li>
       <% end %>
     </ul>
@@ -23,5 +23,3 @@
   <p><%= paginate @cats %></p>
 
 </div>
-
-

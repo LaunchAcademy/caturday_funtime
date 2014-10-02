@@ -5,7 +5,7 @@
 <%= form_for @cat do |f| %>
 <% if @cat.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@cat.errors.count, "error") %> prohibited this cat from being submitted:</h2>
+    <h3><%= pluralize(@cat.errors.count, "error") %> prohibited this cat from being submitted:</h3>
 
     <ul>
     <% @cat.errors.full_messages.each do |msg| %>
@@ -16,27 +16,34 @@
 <% end %>
 
 <p>
-  <%= f.label :name %><br>
+  <%= f.label :name %>
   <%= f.text_field :name %>
 </p>
 
 <p>
-  <%= f.label :description %><br>
+  <%= f.label :description %>
   <%= f.text_area :description %>
 </p>
 
 
 <p>
-  <%= f.label :url, "URL or Choose File" %><br>
-  <%= f.text_field :url %>
-</p>
-
-<p>
+  <%= f.label :cat_photo, "Upload a cat photo" %>
   <%= f.file_field :cat_photo %>
 </p>
 
 <p>
-<%= f.submit class: 'button radius' %><br>
+  <%= f.label :url, "or use an image URL" %>
+  <%= f.text_field :url %>
+</p>
+
+<p>
+  <%= f.label :tag_string, "Tags" %><br>
+  <%= f.text_field :tag_string %>
+</p>
+
+
+<p>
+  <%= f.submit class: 'button radius' %>
 </p>
 
 <% end %>

@@ -7,7 +7,7 @@
   <ul>
     <% @admins.order(email: :desc).each do |admin| %>
       <li>
-        <%= link_to admin.email, user_path(admin) %>
+        <%= link_to admin.name, user_path(admin) %> | <%= admin.email %>
       </li>
     <% end %>
   </ul>
@@ -18,7 +18,7 @@
   <ul>
     <% @members.order(created_at: :desc).page(params[:page]).per(20).each do |member| %>
       <li>
-        <%= link_to member.email, user_path(member) %> |
+        <%= link_to member.name, user_path(member) %> | <%= member.email %>
         <%= link_to 'Delete this loser', admin_user_path(member), method: :delete%>
       </li>
     <% end %>
