@@ -16,7 +16,7 @@ class CatsController < ApplicationController
     @cat.user = current_user
 
     if @cat.save
-      redirect_to cats_path
+      redirect_to cat_path(@cat)
     else
       render :new
     end
@@ -59,6 +59,6 @@ class CatsController < ApplicationController
   private
 
   def cat_params
-    params.require(:cat).permit(:name, :description, :url, :cat_photo)
+    params.require(:cat).permit(:name, :description, :url, :tag_string, :cat_photo)
   end
 end
