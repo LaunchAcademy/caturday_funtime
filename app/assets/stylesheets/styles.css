@@ -38,10 +38,13 @@ input[type="text"], textarea {
   padding: 5px;
 }
 
+input[type="file"] {
+  font-size: 0.7em;
+}
+
 textarea {
   height: 10em;
   border-radius: 4px;
-  padding: 5px;
 }
 
 a {
