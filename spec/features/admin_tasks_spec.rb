@@ -12,7 +12,7 @@ feature 'admin can manage users' do
 
   scenario 'admin deletes miscreant user' do
     visit '/admin/users'
-    click_button "Delete this user"
+    click_link "Delete this loser"
     expect(page).to have_content("You've successfully deleted this loser.")
   end
 
