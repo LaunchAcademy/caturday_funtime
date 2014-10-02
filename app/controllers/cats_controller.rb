@@ -16,7 +16,6 @@ class CatsController < ApplicationController
     @cat.user = current_user
 
     if @cat.save
-      @cat.tag_string=(cat_params[:tag_string])
       redirect_to cat_path(@cat)
     else
       render :new
