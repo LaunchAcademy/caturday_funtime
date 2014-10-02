@@ -3,28 +3,23 @@ Things to work on
 
 CURRENT:
 --------
-
-N/A
+* Search for Cats
+* Email users when review is posted
+* 404 page for errors that might appear in production
 
 TODO:
 -----
 
-* User validation for review creation (1 per user, per cat -- check if current_user = review user)
-* Votes for cats and reviews
+* add 'notify admin' feature for inappropriate content
+* layout of users page
+  - admin listed above users
+  - username links to profile (delete from there)
+
 
 
 Future (if we have time):
 -------------------------
 
-* Create categories table (tags)
-* Create categorizations table (cats can have many categories)
-
-* Users can submit category tags on each cat's show page
-* Validation of submission of tag & categorizations
-
-* Create a category index page
-* Create a category show page
-
-* User profile, including review posts & cats posted
+* Option to BAN (and not delete) users
 
 * Vulgarity word detection, replace with MEOW or KITTENS!

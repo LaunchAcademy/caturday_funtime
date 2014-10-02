@@ -1,7 +1,7 @@
 <div class="index">
 
   <hr>
-  <h1>Cat Index:</h1>
+  <h1>Recently Added Cats:</h1>
   <hr>
 
   <% if @cats.empty? %>
@@ -10,12 +10,19 @@
     <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
       <% @cats.each do |cat| %>
         <li>
-          <p><%= link_to image_tag(cat.url), cat %></p>
-          <p><strong><%= link_to cat.name, cat %></strong><br>
-          posted by <%= cat.user.name %></p>
+          <div class="index-image">
+            <%= link_to photo_for_cat(cat), cat %>
+            </div><br>
+          <strong><%= link_to cat.name, cat %></strong><br>
+          <strong><%= cat.vote_score %> Votes</strong><br>
+          <%= cat.user.name %>
         </li>
       <% end %>
     </ul>
   <% end %>
+
+  <hr>
+
+  <p><%= paginate @cats %></p>
 
 </div>

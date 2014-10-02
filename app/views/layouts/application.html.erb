@@ -20,6 +20,9 @@
         <%= link_to('Logout', destroy_user_session_path, class: 'button radius', :method => :delete) %>
       </li>
       <li>
+        <%= link_to 'My Profile', user_path(current_user), class: 'button radius' %>
+      </li>
+      <li>
         <%= link_to 'Submit Cat', new_cat_path, class: 'button radius' %>
       </li>
     <% else %>
@@ -29,6 +32,9 @@
     <% end %>
       <li>
         <%= link_to 'Cat Index', cats_path, class: 'button radius' %>
+      </li>
+      <li>
+        <%= link_to 'Cat Search', search_index_path, class: 'button radius' %>
       </li>
     <% if user_signed_in? && current_user.is_admin? %>
       <li>
@@ -53,6 +59,9 @@
         <%= link_to('Logout', destroy_user_session_path, class: 'button radius', :method => :delete) %>
         </li>
         <li>
+        <%= link_to 'My Profile', user_path(current_user), class: 'button radius' %>
+        </li>
+        <li>
           <%= link_to 'Submit Cat', new_cat_path, class: 'button radius' %>
         </li>
       <% else %>
@@ -61,7 +70,9 @@
         </li>
       <% end %>
         <li><%= link_to 'Cat Index', cats_path, class: 'button radius' %></li>
-
+        <li>
+          <%= link_to 'Cat Search', search_index_path, class: 'button radius' %>
+        </li>
       <% if user_signed_in? && current_user.is_admin? %>
         <li>
           <%= link_to 'Admin', admin_users_path, class: 'button radius' %>
