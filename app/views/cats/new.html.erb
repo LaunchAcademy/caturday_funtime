@@ -5,7 +5,7 @@
 <%= form_for @cat do |f| %>
 <% if @cat.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@cat.errors.count, "error") %> prohibited this cat from being submitted:</h2>
+    <h3><%= pluralize(@cat.errors.count, "error") %> prohibited this cat from being submitted:</h3>
 
     <ul>
     <% @cat.errors.full_messages.each do |msg| %>
