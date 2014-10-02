@@ -1,50 +1,50 @@
 <hr>
 
 <h2><%= @cat.name %></h2>
+
 <% if current_user && current_user.is_admin? %>
 <%= form_for [@cat], method: :delete do |f| %>
   <%= f.submit "PURGE THIS SCOURGE", class: "button radius" %>
   <% end %>
 <% end %>
-<strong><%= image_tag(@cat_image) %> <%= @cat.user.email %></strong> at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
-<% if @cat.user == current_user %>
-  | <%= link_to "Edit/Delete", edit_cat_path(@cat) %>
-<% end %>
-
 
 <div class="cat-vote">
+  <%= image_tag(@cat_image) %> by <strong><%= @cat.user.email %></strong><br>at <%= @cat.created_at.strftime("%l:%M %p")%> on <%= @cat.created_at.strftime("%b %d, %Y")%>
+  <% if @cat.user == current_user %>
+    | <%= link_to "Edit/Delete", edit_cat_path(@cat) %>
+  <% end %>
 
-<strong> <%= @cat.vote_score || 0 %> Votes </strong>
-
-  <%= form_for [@cat, @vote] do |f| %>
-  <%= f.hidden_field :value, value: "1" %>
-    <% if @vote.user == current_user && @vote.value == 1 %>
-      <%= image_submit_tag("paw_upvoted.png") %>
-    <% else %>
-      <%= image_submit_tag("paw_up.png") %>
+  <span>
+    <strong> | <%= @cat.vote_score || 0 %> Votes </strong>
+    <%= form_for [@cat, @vote] do |f| %>
+    <%= f.hidden_field :value, value: "1" %>
+      <% if @vote.user == current_user && @vote.value == 1 %>
+        <%= image_submit_tag("paw_upvoted.png") %>
+      <% else %>
+        <%= image_submit_tag("paw_up.png") %>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <%= form_for [@cat, @vote] do |f| %>
-  <%= f.hidden_field :value, value: "-1" %>
-    <% if @vote.user == current_user && @vote.value == -1 %>
-      <%= image_submit_tag("paw_downvoted.png") %>
-    <% else %>
-      <%= image_submit_tag("paw_down.png") %>
+    <%= form_for [@cat, @vote] do |f| %>
+    <%= f.hidden_field :value, value: "-1" %>
+      <% if @vote.user == current_user && @vote.value == -1 %>
+        <%= image_submit_tag("paw_downvoted.png") %>
+      <% else %>
+        <%= image_submit_tag("paw_down.png") %>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <% if @vote.user == current_user && !@vote.value.nil? %>
-    <%= form_for [@cat, @vote], method: :delete do |f| %>
-    <%= image_submit_tag("paw_clear.png") %>
-  <% end %>
-  <% end %>
+    <% if @vote.user == current_user && !@vote.value.nil? %>
+      <%= form_for [@cat, @vote], method: :delete do |f| %>
+      <%= image_submit_tag("paw_clear.png") %>
+    <% end %>
+    <% end %>
+  </span>
 </div>
-
 
 <hr>
 <ul>
-  <li class="show"><%= photo_for_cat(@cat) %></li>
+  <li class="show"><p><%= photo_for_cat(@cat) %></p></li>
   <li> <p><strong>Description:</strong> <%= @cat.description.empty? ? "(none)" : @cat.description %><p> </li>
 </ul>
 <hr>
@@ -52,14 +52,14 @@
 <%= form_for [@cat, @review] do |f| %>
   <% if @review.errors.any? %>
 
-  <div id="error_explanation">
-    <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being submitted:</h2>
-    <ul>
-      <% @review.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being submitted:</h2>
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
 
   <% end %>
 
@@ -71,6 +71,7 @@
   <p>
     <%= f.submit class: 'button radius' %>
   </p>
+
 <% end %>
 
 <hr>
