@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20141002172438) do
     t.string   "unconfirmed_email"
     t.string   "role",                   default: "member", null: false
     t.string   "profile_photo"
+    t.string   "name",                                      null: false
     t.boolean  "review_email",           default: true
   end
 

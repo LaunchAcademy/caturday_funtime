@@ -1,10 +1,8 @@
-if Rails.env.test?
-  CarrierWave.configure do |config|
-    config.storage = :file
-    config.enable_processing = false
-  end
-else
-  CarrierWave.configure do |config|
+CarrierWave.configure do |config|
+  if Rails.env.development? || Rails.env.test?
+      config.storage = :file
+      config.enable_processing = false
+  else
     config.fog_credentials = {
       :provider               => 'AWS',
       :aws_access_key_id      => ENV['AWS_ACCESS_KEY_ID'] || "",

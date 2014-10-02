@@ -23,6 +23,9 @@
     <div><%= f.label "Upload Profile Photo" %><br/>
     <%= f.file_field :profile_photo %></div>
 
+    <div><%= f.label "Receive email when someone reviews your cat" %>
+    <%= f.check_box :review_email %></div>
+
     <div><%= f.submit "Update", class: "button radius" %></div>
   <% end %>
 

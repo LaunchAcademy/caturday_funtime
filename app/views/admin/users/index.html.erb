@@ -7,7 +7,7 @@
   <ul>
     <% @members.each do |member| %>
       <li>
-        <%= member.email %>
+        <%=member.name %> (<%= member.email %>)
         <%= form_for [:admin, member], method: :delete do |f| %>
           <%= f.submit "Delete this user", class: "button radius" %>
           <% end %>
@@ -22,7 +22,7 @@
   <ul>
     <% @admins.each do |admin| %>
       <li>
-        <%= admin.email %>
+        <%=admin.name %> (<%= admin.email %>)
       </li>
     <% end %>
   </ul>
