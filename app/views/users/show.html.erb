@@ -2,29 +2,30 @@
 <% if user_signed_in? && @user.editable_by?(current_user) %>
   <%= link_to 'Edit Profile', edit_user_registration_path %>
 <% end %>
-<div id = 'profile_photo' ><%= image_tag(@user.profile_photo) %></div>
+<div id="profile_photo"><p><%= image_tag(@user.profile_photo) %></p></div>
 
-<h3>Cats</h3>
+<h3>Cats posted:</h3>
 <ul>
  <% if @user.cats.empty? %>
     <p>No cats yet!</p>
   <% else %>
-    <% @user.cats.each do |cat| %>
-      <li><%= link_to cat.name, cat_path(cat) %> | created at <%= cat.created_at.strftime("%l:%M %p")%> on <%= cat.created_at.strftime("%b %d, %Y")%> | <%= cat.vote_score || 0 %> Votes
+    <% @user_cats.page(params[:page]).per(10).each do |cat| %>
+      <li><%= link_to cat.name, cat_path(cat) %> | created at <%= cat.created_at.strftime("%l:%M %p")%> on <%= cat.created_at.strftime("%b %d, %Y")%> | <%= cat.vote_score || 0 %> Votes</li>
     <% end %>
   <% end %>
 </ul>
-<br>
+<p><%= paginate @user.cats.page(params[:page]).per(10) %></p>
 
-<h3>Reviews</h3>
+<h3>Reviews posted:</h3>
 <ul>
   <% if @user.reviews.empty? %>
     <p>No reviews yet!</p>
   <% else %>
-    <% @user.reviews.each do |review| %>
+    <% @user_reviews.page(params[:page]).per(5).each do |review| %>
       <li><%= link_to review.cat.name, cat_path(review.cat) %> | created at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%> | <%= review.vote_score || 0 %> Votes
         <br><blockquote><%= review.review[0..50] %> ...</blockquote>
       </li>
     <% end %>
   <% end %>
+<p><%= paginate @user.reviews.page(params[:page]).per(5) %></p>
 </ul>

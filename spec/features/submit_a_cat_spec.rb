@@ -17,7 +17,7 @@ feature 'submit cat' do
     visit "/cats/new"
 
     fill_in "Name", with: "Gangsta Cat"
-    fill_in "or image URL", with: "http://example.com/cat.png"
+    fill_in "or use an image URL", with: "http://example.com/cat.png"
     fill_in "Description", with: "The fanciest cat I've seen all day."
     click_button "Create Cat"
 
@@ -50,7 +50,7 @@ feature 'submit cat' do
     visit "/cats/new"
 
     fill_in "Name", with: "Elvis"
-    fill_in "or image URL", with: "http://example.com/cat.png"
+    fill_in "or use an image URL", with: "http://example.com/cat.png"
     attach_file "cat_cat_photo", sample_photo
 
     click_button "Create Cat"
