@@ -14,7 +14,7 @@ feature 'edit cat' do
     visit edit_cat_path(@cat)
 
     fill_in "Name", with: "Gangsta Cat"
-    fill_in "URL or Choose File", with: "http://example.com/cat.png"
+    fill_in "or use an image URL", with: "http://example.com/cat.png"
     fill_in "Description", with: "The fanciest cat I've seen all day."
     fill_in "Tags", with: "gangsta fancy"
     click_button "Update Cat"
@@ -34,7 +34,7 @@ feature 'edit cat' do
     visit edit_cat_path(@cat)
 
     fill_in "Name", with: ""
-    fill_in "URL or Choose File", with: ""
+    fill_in "or use an image URL", with: ""
     fill_in "Description", with: ""
     click_button "Update Cat"
 
