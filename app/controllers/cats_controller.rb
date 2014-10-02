@@ -25,6 +25,7 @@ class CatsController < ApplicationController
   def show
     @cat = Cat.find(params[:id])
     @categories = @cat.categories
+    @cat_image = @cat.user.profile_photo.thumb
     @review = Review.new
     @vote = @cat.votes.find_or_initialize_by(user: current_user)
   end
@@ -59,6 +60,6 @@ class CatsController < ApplicationController
   private
 
   def cat_params
-    params.require(:cat).permit(:name, :description, :url, :tag_string)
+    params.require(:cat).permit(:name, :description, :url, :tag_string, :cat_photo)
   end
 end

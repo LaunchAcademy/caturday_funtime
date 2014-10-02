@@ -26,12 +26,16 @@
 </p>
 
 <p>
-  <%= f.label :url %><br>
+  <%= f.label :url, "URL or Choose File" %><br>
   <%= f.text_field :url %>
 </p>
 <p>
   <%= f.label :tag_string, "Tags" %><br>
   <%= f.text_field :tag_string %>
+</p>
+
+<p>
+  <%= f.file_field :cat_photo %>
 </p>
 
 <p>

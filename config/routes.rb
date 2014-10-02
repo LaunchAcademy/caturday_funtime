@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: [:show]
 
   resources :cats do
     resources :reviews, only: [:create]
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   resources :reviews, only: [:edit, :update, :destroy] do
     resources :votes, only: [:create, :update, :destroy]
   end
+
+  resources :search, only: [:index]
 
   namespace :admin do
     resources :users, only: [:index, :destroy]
