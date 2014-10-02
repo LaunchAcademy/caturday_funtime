@@ -4,14 +4,6 @@
 <% end %>
 <div id="profile_photo"><p><%= image_tag(@user.profile_photo) %></p></div>
 
-<% if user_signed_in? && @user.editable_by?(current_user) %>
-  <%= form_for @user do |f| %>
-    <%= f.label "Receive email when someone reviews your cat" %>
-    <%= f.check_box :review_email %><br>
-    <%= f.submit "Submit", class: "button radius" %>
-  <% end %>
-<% end %>
-
 <h3>Cats posted:</h3>
 <ul>
  <% if @user.cats.empty? %>

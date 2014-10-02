@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20141002172438) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "role",                   default: "member", null: false
-    t.string   "name",                                      null: false
     t.string   "profile_photo"
+    t.string   "name",                                      null: false
     t.boolean  "review_email",           default: true
   end
 
