@@ -10,7 +10,7 @@
     <p>No cats yet!</p>
   <% else %>
     <% @user_cats.page(params[:page]).per(10).each do |cat| %>
-      <li><%= link_to cat.name, cat_path(cat) %> | created at <%= cat.created_at.strftime("%l:%M %p")%> on <%= cat.created_at.strftime("%b %d, %Y")%> | <%= cat.vote_score || 0 %> Votes</li>
+      <li><%= link_to cat.name, cat_path(cat) %> | created at <%= format_time(cat.created_at) %> on <%= format_date(cat.created_at) %> | <%= pluralize(cat.vote_score, "Paw") %> </li>
     <% end %>
   <% end %>
 </ul>
@@ -22,7 +22,7 @@
     <p>No reviews yet!</p>
   <% else %>
     <% @user_reviews.page(params[:page]).per(5).each do |review| %>
-      <li><%= link_to review.cat.name, cat_path(review.cat) %> | created at <%= review.created_at.strftime("%l:%M %p")%> on <%= review.created_at.strftime("%b %d, %Y")%> | <%= review.vote_score || 0 %> Votes
+      <li><%= link_to review.cat.name, cat_path(review.cat) %> | created at <%= format_time(review.created_at) %> on <%= format_date(review.created_at) %> | <%= pluralize(review.vote_score, "Paw") %>
         <br><blockquote><%= review.review[0..50] %> ...</blockquote>
       </li>
     <% end %>
