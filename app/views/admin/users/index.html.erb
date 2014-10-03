@@ -2,6 +2,17 @@
 <h1> All Users </h1>
 <hr>
 
+<div id="admins">
+  <h3> demi-gods </h3>
+  <ul>
+    <% @admins.each do |admin| %>
+      <li>
+        <%=admin.name %> (<%= admin.email %>)
+      </li>
+    <% end %>
+  </ul>
+</div>
+
 <div id="members">
   <h3> plebs </h3>
   <ul>
@@ -16,14 +27,3 @@
   </ul>
 </div>
 <br>
-
-<div id="admins">
-  <h3> demi-gods </h3>
-  <ul>
-    <% @admins.each do |admin| %>
-      <li>
-        <%=admin.name %> (<%= admin.email %>)
-      </li>
-    <% end %>
-  </ul>
-</div>
