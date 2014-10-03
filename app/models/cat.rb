@@ -51,4 +51,12 @@ class Cat < ActiveRecord::Base
       errors[:base] << "too many cats"
     end
   end
+
+  def created_time
+    created_at.strftime("%l:%M %p")
+  end
+
+  def created_date
+    created_at.strftime("%b %d, %Y")
+  end
 end
