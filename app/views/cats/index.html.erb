@@ -26,7 +26,7 @@
   <% if @cats.empty? %>
     <p>No cats yet!</p>
   <% else %>
-    <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+    <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 recent-cats">
       <% @cats.each do |cat| %>
         <li>
           <div class="index-image"><%= link_to photo_for_cat(cat), cat %></div><br>
