@@ -16,11 +16,11 @@ class Review < ActiveRecord::Base
   end
 
   def editable_by?(user)
-    self.user == user || user.is_admin?
+    self.user == user || user.admin?
   end
 
   def self.authorized_find(user, id)
-    if user.is_admin?
+    if user.admin?
       find(id)
     else
       where(user: user).find(id)

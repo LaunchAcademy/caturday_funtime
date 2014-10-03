@@ -8,7 +8,10 @@ feature 'user pages through cats and reviews' do
 
   scenario 'user only sees new cats' do
     visit cats_path
-    expect(page).to_not have_content(@old_cat.name)
+
+    within("ul.recent-cats") do
+      expect(page).to_not have_content(@old_cat.name)
+    end
   end
 
   scenario 'user views 2nd page and sees older cats' do

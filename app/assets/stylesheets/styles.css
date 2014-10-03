@@ -179,3 +179,8 @@ button:hover, .button:hover, button:active, .button:hover {
 .pagination {
   margin-bottom: 20px;
 }
+
+#profile_photo {
+  max-width: 200px;
+  max-height: 300px;
+}

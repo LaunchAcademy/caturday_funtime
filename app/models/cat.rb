@@ -23,7 +23,7 @@ class Cat < ActiveRecord::Base
   end
 
   def self.authorized_find(user, id)
-    if user.is_admin?
+    if user.admin?
       find(id)
     else
       where(user: user).find(id)
@@ -35,11 +35,9 @@ class Cat < ActiveRecord::Base
   end
 
   def tag_string=(value)
-    if !value.empty?
-      tags = value.split(' ')
-      new_categories = tags.map { |tag| Category.find_or_create_by(tag: tag) }
-      self.categories = new_categories
-    end
+    tags = value.split(' ')
+    new_categories = tags.map { |tag| Category.find_or_create_by(tag: tag) }
+    self.categories = new_categories
   end
 
   def url_or_upload
