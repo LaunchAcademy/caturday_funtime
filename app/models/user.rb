@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :votes, dependent: :destroy
 
   def admin?
-    self != nil && role == 'admin'
+    role == 'admin'
   end
 
   def editable_by?(user)

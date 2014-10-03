@@ -19,14 +19,6 @@ class Review < ActiveRecord::Base
     self.user == user || user.admin?
   end
 
-  def created_time
-    created_at.strftime("%l:%M %p")
-  end
-
-  def created_date
-    created_at.strftime("%b %d, %Y")
-  end
-
   def self.authorized_find(user, id)
     if user.admin?
       find(id)

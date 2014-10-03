@@ -2,7 +2,7 @@
 
 <h2><%= @cat.name %></h2>
 
-<%= render 'tags', cat: @cat %>
+<%= render partial: 'cats/tags', locals: { cat: @cat } %>
 
 <% if user_signed_in? && current_user.admin? %>
   <%= form_for [@cat], method: :delete do |f| %>
@@ -15,15 +15,14 @@
    by <strong>
      <%= link_to @cat.user.name, user_path(@cat.user) %>
      </strong><br>
-  at <%= @cat.created_time %> on <%= @cat.created_date %>
-
+  at <%= format_time(@cat.created_at) %> on <%= format_date(@cat.created_at) %>
   <% if @cat.user == current_user %>
     | <%= link_to "Edit/Delete", edit_cat_path(@cat) %>
   <% end %>
 
   <span>
     <strong> | <%= @cat.vote_score || 0 %> Votes </strong>
-    <%= render 'vote', voteable: @cat, vote: @vote %>
+    <%= render partial: 'cats/vote', locals: { voteable: @cat, vote: @vote } %>
   </span>
 </div>
 
@@ -34,7 +33,7 @@
 </ul>
 <hr>
 
-<%= render 'new_review', cat: @cat, review: @review %>
+<%= render partial: 'cats/new_review', locals: { cat: @cat, review: @review } %>
 
 <hr>
 
@@ -46,12 +45,11 @@
   <% if !@cat.reviews.empty? %>
     <% @cat.reviews.page(params[:page]).per(3).each do |review| %>
       <li>
-<<<<<<< HEAD
         <strong class="user-thumb">
           <%= image_tag(review.user.profile_photo.thumb) %>
           <%= link_to review.user.name, user_path(review.user) %>
         </strong><br>
-        at <%= review.created_time %> on <%= review.created_date %>
+        at <%= format_time(review.created_at) %> on <%= format_date(review.created_at) %>
 
         <%= render 'review_edit', review: review %>
 
