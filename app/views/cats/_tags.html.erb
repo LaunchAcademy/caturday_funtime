@@ -1,0 +1,11 @@
+<div class="tags">
+  <p>Tags:
+  <% if !cat.categories.empty? %>
+    <% cat.categories.each do |category| %>
+      <%= link_to category.tag, category_path(category) %>
+    <% end %>
+  <% else %>
+    (none)
+  <% end %>
+  </p>
+</div>

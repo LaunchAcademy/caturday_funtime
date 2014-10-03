@@ -1,0 +1,6 @@
+<% if user_signed_in? && review.editable_by?(current_user) %>
+  | <%= link_to 'Edit', edit_review_path(review) %>
+  | <%= link_to 'Delete Plz', review_path(review),
+        method: :delete,
+        data: { confirm: 'wow really kill dis review u monster??' } %>
+<% end %>

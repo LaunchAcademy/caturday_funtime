@@ -19,7 +19,7 @@
     <% @members.order(created_at: :desc).page(params[:page]).per(20).each do |member| %>
       <li>
         <%= link_to member.name, user_path(member) %> | <%= member.email %>
-        <%= link_to 'Delete this loser', admin_user_path(member), method: :delete%>
+        <%= link_to 'Delete this loser', admin_user_path(member), method: :delete, data: { confirm: 'wow really delete this loser??' }%>
       </li>
     <% end %>
   </ul>

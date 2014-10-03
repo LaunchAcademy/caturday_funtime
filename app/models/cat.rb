@@ -23,7 +23,7 @@ class Cat < ActiveRecord::Base
   end
 
   def self.authorized_find(user, id)
-    if user.is_admin?
+    if user.admin?
       find(id)
     else
       where(user: user).find(id)

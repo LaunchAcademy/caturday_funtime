@@ -4,7 +4,7 @@ class CatsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
   def index
-    @cats = Cat.all.order(created_at: :desc).page(params[:page]).per(CATS_PER_PAGE)
+    @cats = Cat.includes(:user, :votes).order(created_at: :desc).page(params[:page]).per(CATS_PER_PAGE)
 
     @top_cats = {}
     top_cats_calc = ActiveRecord::Base.connection.execute(
@@ -33,7 +33,7 @@ class CatsController < ApplicationController
   end
 
   def show
-    @cat = Cat.find(params[:id])
+    @cat = Cat.includes(:user, :reviews).find(params[:id])
     @cat_image = @cat.user.profile_photo.thumb
     @review = Review.new
     @vote = @cat.votes.find_or_initialize_by(user: current_user)
