@@ -16,6 +16,7 @@
      <%= link_to @cat.user.name, user_path(@cat.user) %>
      </strong><br>
   at <%= @cat.created_time %> on <%= @cat.created_date %>
+
   <% if @cat.user == current_user %>
     | <%= link_to "Edit/Delete", edit_cat_path(@cat) %>
   <% end %>
@@ -45,6 +46,7 @@
   <% if !@cat.reviews.empty? %>
     <% @cat.reviews.page(params[:page]).per(3).each do |review| %>
       <li>
+<<<<<<< HEAD
         <strong class="user-thumb">
           <%= image_tag(review.user.profile_photo.thumb) %>
           <%= link_to review.user.name, user_path(review.user) %>

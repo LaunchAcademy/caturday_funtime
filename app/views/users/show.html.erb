@@ -1,8 +1,9 @@
-<h3><%= @user.email %></h3>
+<h3><%= @user.name %></h3>
 <% if user_signed_in? && @user.editable_by?(current_user) %>
   <%= link_to 'Edit Profile', edit_user_registration_path %>
 <% end %>
 <div id="profile_photo"><p><%= image_tag(@user.profile_photo) %></p></div>
+<p><%= @user.email %></p>
 
 <h3>Cats posted:</h3>
 <ul>

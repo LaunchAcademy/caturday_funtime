@@ -42,6 +42,7 @@ group :development, :test do
   gem "launchy"
   gem "nyan-cat-formatter"
   gem "dotenv-rails"
+  gem "quiet_assets"
 end
 
 group :production do
