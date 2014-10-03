@@ -1,13 +1,32 @@
 <div class="index">
 
   <hr>
+  <h1>Top 3 Cats:</h1>
+  <hr>
+
+  <% if @top_cats.empty? %>
+    <p>No cats yet!</p>
+  <% else %>
+    <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+      <% @top_cats.each do |cat, vote| %>
+        <li>
+          <div class="index-image"><%= link_to photo_for_cat(cat), cat %></div><br>
+          <strong><%= link_to cat.name, cat %></strong><br>
+          <strong><%= vote %> Votes</strong><br>
+          <p><%= link_to cat.user.name, user_path(cat.user) %></p>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <hr>
   <h1>Recently Added Cats:</h1>
   <hr>
 
   <% if @cats.empty? %>
     <p>No cats yet!</p>
   <% else %>
-    <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+    <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 recent-cats">
       <% @cats.each do |cat| %>
         <li>
           <div class="index-image"><%= link_to photo_for_cat(cat), cat %></div><br>
