@@ -5,6 +5,11 @@ class CatsController < ApplicationController
 
   def index
     @cats = Cat.all.order(created_at: :desc).page(params[:page]).per(CATS_PER_PAGE)
+    cat_votes = {}
+    Cat.all.each do |cat|
+      cat_votes.merge!(cat => cat.vote_score)
+    end
+    @top_cats = cat_votes.sort_by{|k, v| v}.reverse.first(3)
   end
 
   def new
