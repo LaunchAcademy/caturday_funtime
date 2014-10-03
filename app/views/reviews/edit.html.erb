@@ -3,7 +3,7 @@
   <div id="error_explanation">
     <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being submitted:</h2>
     <ul>
-      <%= @review.errors.full_messages.each do |msg| %>
+      <% @review.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
