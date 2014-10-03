@@ -16,18 +16,29 @@ feature 'edit cat' do
     fill_in "Name", with: "Gangsta Cat"
     fill_in "or use an image URL", with: "http://example.com/cat.png"
     fill_in "Description", with: "The fanciest cat I've seen all day."
-    fill_in "Tags", with: "gangsta fancy"
+    fill_in "Tags", with: "homie fancy"
     click_button "Update Cat"
 
     expect(page).to have_content("Gangsta Cat")
     expect(page).to have_content("The fanciest cat I've seen all day.")
     within ("div.tags") do
-      expect(page).to have_content("gangsta")
+      expect(page).to have_content("homie")
       expect(page).to have_content("fancy")
       expect(page).to_not have_content("josh")
       expect(page).to_not have_content("uncanny")
     end
     expect(page).to have_css("img[src='http://example.com/cat.png']")
+  end
+
+  scenario 'user removes tags on cat' do
+    visit edit_cat_path(@cat)
+    fill_in "Tags", with: ""
+    click_button "Update Cat"
+
+    within ("div.tags") do
+      expect(page).to_not have_content("josh")
+      expect(page).to_not have_content("uncanny")
+    end
   end
 
   scenario 'user submits blank edits' do
