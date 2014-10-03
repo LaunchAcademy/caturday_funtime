@@ -5,11 +5,16 @@ class CatsController < ApplicationController
 
   def index
     @cats = Cat.all.order(created_at: :desc).page(params[:page]).per(CATS_PER_PAGE)
-    cat_votes = {}
-    Cat.all.each do |cat|
-      cat_votes.merge!(cat => cat.vote_score)
+
+    @top_cats = {}
+    top_cats_calc = ActiveRecord::Base.connection.execute(
+      "SELECT voteable_id, sum(value)
+      FROM votes WHERE voteable_type = 'Cat'
+      GROUP BY voteable_id ORDER BY sum(value) DESC LIMIT 3")
+
+    top_cats_calc.each do |row|
+      @top_cats.merge!(Cat.find(row["voteable_id"].to_i) => row["sum"].to_i)
     end
-    @top_cats = cat_votes.sort_by{|k, v| v}.reverse.first(3)
   end
 
   def new
