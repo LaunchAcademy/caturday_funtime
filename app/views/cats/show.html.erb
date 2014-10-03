@@ -15,7 +15,7 @@
    by <strong>
      <%= link_to @cat.user.name, user_path(@cat.user) %>
      </strong><br>
-  at <%= @cat.created_time %> on <%= @cat.created_date %>
+  at <%= format_time(@cat.created_at) %> on <%= format_date(@cat.created_at) %>
   <% if @cat.user == current_user %>
     | <%= link_to "Edit/Delete", edit_cat_path(@cat) %>
   <% end %>
@@ -49,7 +49,7 @@
           <%= image_tag(review.user.profile_photo.thumb) %>
           <%= link_to review.user.name, user_path(review.user) %>
         </strong><br>
-        at <%= review.created_time %> on <%= review.created_date %>
+        at <%= format_time(review.created_at) %> on <%= format_date(review.created_at) %>
 
         <%= render 'review_edit', review: review %>
 
