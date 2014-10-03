@@ -16,7 +16,7 @@ class Review < ActiveRecord::Base
   end
 
   def editable_by?(user)
-    self.user == user || user.is_admin?
+    self.user == user || user.admin?
   end
 
   def created_time
@@ -24,10 +24,11 @@ class Review < ActiveRecord::Base
   end
 
   def created_date
+    created_at.strftime("%b %d, %Y")
   end
 
   def self.authorized_find(user, id)
-    if user.is_admin?
+    if user.admin?
       find(id)
     else
       where(user: user).find(id)

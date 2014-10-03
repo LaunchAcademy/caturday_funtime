@@ -1,23 +1,25 @@
-<%= form_for [voteable, vote] do |f| %>
-  <%= f.hidden_field :value, value: "1" %>
-    <% if vote.user == current_user && vote.value == 1 %>
-      <%= image_submit_tag("paw_upvoted.png") %>
-    <% else %>
-      <%= image_submit_tag("paw_up.png") %>
+<% if user_signed_in? %>
+    <%= form_for [voteable, vote] do |f| %>
+      <%= f.hidden_field :value, value: "1" %>
+        <% if vote.user == current_user && vote.value == 1 %>
+          <%= image_submit_tag("paw_upvoted.png") %>
+        <% else %>
+          <%= image_submit_tag("paw_up.png") %>
+        <% end %>
     <% end %>
-<% end %>
 
-<%= form_for [voteable, vote] do |f| %>
-  <%= f.hidden_field :value, value: "-1" %>
-    <% if vote.user == current_user && vote.value == -1 %>
-      <%= image_submit_tag("paw_downvoted.png") %>
-    <% else %>
-      <%= image_submit_tag("paw_down.png") %>
+    <%= form_for [voteable, vote] do |f| %>
+      <%= f.hidden_field :value, value: "-1" %>
+        <% if vote.user == current_user && vote.value == -1 %>
+          <%= image_submit_tag("paw_downvoted.png") %>
+        <% else %>
+          <%= image_submit_tag("paw_down.png") %>
+        <% end %>
     <% end %>
-<% end %>
 
-<% if vote.user == current_user && !vote.value.nil? %>
-    <%= form_for [voteable, vote], method: :delete do |f| %>
-      <%= image_submit_tag("paw_clear.png") %>
+    <% if vote.user == current_user && !vote.value.nil? %>
+        <%= form_for [voteable, vote], method: :delete do |f| %>
+          <%= image_submit_tag("paw_clear.png") %>
+        <% end %>
     <% end %>
 <% end %>
