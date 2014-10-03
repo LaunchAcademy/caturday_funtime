@@ -16,7 +16,6 @@ class ReviewsController < ApplicationController
       @vote = @cat.votes.find_or_initialize_by(user: current_user)
       flash[:alert] = "fael review lol, try again wow"
       render "cats/show"
-      # redirect_to cat_path(@review.cat)
     end
   end
 

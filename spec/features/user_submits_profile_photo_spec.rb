@@ -24,5 +24,4 @@ feature 'user submits profile photo' do
     expect(page).to have_css("img[alt=\"Cat milk\"]")
 
   end
-
 end
