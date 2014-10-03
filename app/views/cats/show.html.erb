@@ -28,7 +28,7 @@
   <% end %>
 
   <span>
-    <strong> | <%= @cat.vote_score || 0 %> Votes </strong>
+    <strong> | <%= pluralize(@cat.vote_score, "Paw") %></strong>
     <%= form_for [@cat, @vote] do |f| %>
     <%= f.hidden_field :value, value: "1" %>
       <% if @vote.user == current_user && @vote.value == 1 %>
@@ -104,7 +104,7 @@
             | <%= link_to 'Edit', edit_review_path(review) %> | <%= link_to 'Delete Plz', review_path(review),method: :delete, data: { confirm: 'wow really kill dis review u monster??' } %>
           <% end %>
 
-          | <strong><%= review.vote_score || 0 %> votes</strong>
+          | <strong><%= pluralize(review.vote_score, "Paw") %></strong>
 
           <span class="review-<%= review.id %>-vote review-vote">
             <% if user_signed_in? %>
