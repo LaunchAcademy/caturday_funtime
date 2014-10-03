@@ -36,6 +36,9 @@
       <li>
         <%= link_to 'Cat Search', search_index_path, class: 'button radius' %>
       </li>
+      <li>
+        <%= link_to 'About', about_index_path, class: 'button radius'%>
+      </li>
     <% if user_signed_in? && current_user.admin? %>
       <li>
         <%= link_to 'Admin', admin_users_path, class: 'button radius' %>
@@ -71,6 +74,9 @@
         <li><%= link_to 'Cat Index', cats_path, class: 'button radius' %></li>
         <li>
           <%= link_to 'Cat Search', search_index_path, class: 'button radius' %>
+        </li>
+        <li>
+        <%= link_to 'About', about_index_path, class: 'button radius' %>
         </li>
       <% if user_signed_in? && current_user.admin? %>
         <li>

@@ -29,7 +29,7 @@
 <hr>
 <ul>
   <li class="show"><p><%= photo_for_cat(@cat) %></p></li>
-  <li> <p><strong>Description:</strong> <%= @cat.description || "(none)" %><p> </li>
+  <li><p><strong>Description:</strong> <%= @cat.description || "(none)" %><p></li>
 </ul>
 <hr>
 
@@ -51,15 +51,14 @@
         </strong><br>
         at <%= format_time(review.created_at) %> on <%= format_date(review.created_at) %>
 
-        <%= render 'review_edit', review: review %>
+        <%= render partial: 'cats/review_edit', locals: { review: review } %>
 
         | <strong><%= review.vote_score || 0 %> votes</strong>
 
         <span class="review-<%= review.id %>-vote review-vote">
-            <%= render 'vote', voteable: review, vote: review
-                .votes.find_or_initialize_by(user: current_user) %>
+            <%= render partial: 'cats/vote', locals: { voteable: review, vote: review
+                .votes.find_or_initialize_by(user: current_user) } %>
         </span>
-
         <blockquote><%= review.review %></blockquote>
     </li>
     <% end %>
