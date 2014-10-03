@@ -3,12 +3,12 @@ class User < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :votes, dependent: :destroy
 
-  def is_admin?
+  def admin?
     role == 'admin'
   end
 
   def editable_by?(user)
-    self == user || user.is_admin?
+    self == user || user.admin?
   end
 
   # Include default devise modules. Others available are:

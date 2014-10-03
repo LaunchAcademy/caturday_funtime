@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authorize!
-    if current_user.nil? or !current_user.is_admin?
+    if current_user.nil? or !current_user.admin?
       raise ActionController::RoutingError.new("Not Found")
     end
   end

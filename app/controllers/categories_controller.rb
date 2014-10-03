@@ -1,7 +1,6 @@
 class CategoriesController < ApplicationController
   def show
-    @category = Category.find(params[:id])
-    @cats = @category.cats
+    @category = Category.includes(cats: [:user, :votes]).find(params[:id])
   end
 
   def index
