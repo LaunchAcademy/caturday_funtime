@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show, :destroy]
 
   root "cats#index"
+
+  resources :about, only: [:index]
 end
