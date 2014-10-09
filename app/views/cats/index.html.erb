@@ -26,20 +26,14 @@
   <% if @cats.empty? %>
     <p>No cats yet!</p>
   <% else %>
-    <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 recent-cats">
-      <% @cats.each do |cat| %>
-        <li>
-          <div class="index-image"><%= link_to photo_for_cat(cat), cat %></div><br>
-          <strong><%= link_to cat.name, cat %></strong><br>
-          <strong><%= pluralize(cat.vote_score, "Paw") %></strong><br>
-          <p><%= link_to cat.user.name, user_path(cat.user) %></p>
-        </li>
-      <% end %>
-    </ul>
+    <div id="cats">
+      <ul class="page small-block-grid-1 medium-block-grid-2 large-block-grid-3 recent-cats">
+        <%= render @cats %>
+      </ul>
+    </div>
   <% end %>
 
   <hr>
 
   <p><%= paginate @cats %></p>
-
 </div>
