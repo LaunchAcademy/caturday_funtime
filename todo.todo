@@ -1,23 +1,18 @@
 Things to work on
 =================
-* re-do the edit for admin on users
 
-=======
+* Future things
+
+
 CURRENT:
 --------
-* 404 page for errors that might appear in production
-* CLEAN UP TESTS && rewrite old tests to include new features
-* add 'notify admin' feature for inappropriate content
-* fix tags
-* ad banner
-* cat votes by highest and time
 
-=======
+* Core features complete
+
 
 Future (if we have time):
 -------------------------
 
 * Option to BAN (and not delete) users
 * Vulgarity word detection, replace with MEOW or KITTENS!
-* optimize query speed
-* RuboCop
+

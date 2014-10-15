@@ -130,7 +130,7 @@ button:hover, .button:hover, button:active, .button:hover {
 }
 
 .tiny-nav .button {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .alert-box.success, .alert-box.warning {
@@ -178,6 +178,12 @@ button:hover, .button:hover, button:active, .button:hover {
 
 .pagination {
   margin-bottom: 20px;
+}
+
+.funteam img {
+  border-width: 5px;
+  border-color: #ff1493;
+  border-radius: 50%;
 }
 
 #profile_photo {

@@ -21,7 +21,7 @@
   <% end %>
 
   <span>
-    <strong> | <%= @cat.vote_score || 0 %> Votes </strong>
+    <strong> | <%= pluralize(@cat.vote_score, "Paw") %></strong>
     <%= render partial: 'cats/vote', locals: { voteable: @cat, vote: @vote } %>
   </span>
 </div>
@@ -53,7 +53,7 @@
 
         <%= render partial: 'cats/review_edit', locals: { review: review } %>
 
-        | <strong><%= review.vote_score || 0 %> votes</strong>
+        | <strong><%= pluralize(review.vote_score, "Paw") %> </strong>
 
         <span class="review-<%= review.id %>-vote review-vote">
             <%= render partial: 'cats/vote', locals: { voteable: review, vote: review

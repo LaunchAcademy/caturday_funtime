@@ -1,0 +1,6 @@
+<li class="cat">
+  <div class="index-image"><%= link_to photo_for_cat(cat), cat %></div><br>
+  <strong><%= link_to cat.name, cat %></strong><br>
+  <strong><%= pluralize(cat.vote_score, "Paw") %></strong><br>
+  <p><%= link_to cat.user.name, user_path(cat.user) %></p>
+</li>

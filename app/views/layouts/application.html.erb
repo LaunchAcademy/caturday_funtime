@@ -14,39 +14,35 @@
 
   <h1>Caturday Funtime! :3</h1>
 
-  <ul>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to('Logout', destroy_user_session_path, class: 'button radius', :method => :delete) %>
-      </li>
-      <li>
-        <%= link_to 'My Profile', user_path(current_user), class: 'button radius' %>
-      </li>
+    <ul class="center">
+      <li><%= link_to 'Cat Index', cats_path, class: 'button radius' %></li>
       <li>
         <%= link_to 'Submit Cat', new_cat_path, class: 'button radius' %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to('Login', new_user_session_path, class: 'button radius') %>
-      </li>
-    <% end %>
-      <li>
-        <%= link_to 'Cat Index', cats_path, class: 'button radius' %>
       </li>
       <li>
         <%= link_to 'Cat Search', search_index_path, class: 'button radius' %>
       </li>
       <li>
-        <%= link_to 'About', about_index_path, class: 'button radius'%>
+        <%= link_to 'About', about_index_path, class: 'button radius' %>
       </li>
     <% if user_signed_in? && current_user.admin? %>
       <li>
         <%= link_to 'Admin', admin_users_path, class: 'button radius' %>
       </li>
     <% end %>
-
+    <% if user_signed_in? %>
+      <li>
+      <%= link_to 'My Profile', user_path(current_user), class: 'button radius' %>
+      </li>
+      <li>
+      <%= link_to('Logout', destroy_user_session_path, class: 'button radius', :method => :delete) %>
+      </li>
+    <% else %>
+      <li>
+      <%= link_to('Login', new_user_session_path, class: 'button radius') %>
+      </li>
+    <% end %>
     </ul>
-
 </div>
 
 <div class="container">
@@ -54,33 +50,33 @@
 
     <%= link_to image_tag("caturday_logo.png"), root_path %>
 
-
     <ul class="right">
-      <% if user_signed_in? %>
-        <li>
-        <%= link_to('Logout', destroy_user_session_path, class: 'button radius', :method => :delete) %>
-        </li>
-        <li>
-        <%= link_to 'My Profile', user_path(current_user), class: 'button radius' %>
-        </li>
+        <li><%= link_to 'Cat Index', cats_path, class: 'button radius' %></li>
+
         <li>
           <%= link_to 'Submit Cat', new_cat_path, class: 'button radius' %>
         </li>
-      <% else %>
-        <li>
-        <%= link_to('Login', new_user_session_path, class: 'button radius') %>
-        </li>
-      <% end %>
-        <li><%= link_to 'Cat Index', cats_path, class: 'button radius' %></li>
         <li>
           <%= link_to 'Cat Search', search_index_path, class: 'button radius' %>
         </li>
         <li>
-        <%= link_to 'About', about_index_path, class: 'button radius' %>
+          <%= link_to 'About', about_index_path, class: 'button radius' %>
         </li>
       <% if user_signed_in? && current_user.admin? %>
         <li>
           <%= link_to 'Admin', admin_users_path, class: 'button radius' %>
+        </li>
+      <% end %>
+      <% if user_signed_in? %>
+        <li>
+        <%= link_to 'My Profile', user_path(current_user), class: 'button radius' %>
+        </li>
+        <li>
+        <%= link_to('Logout', destroy_user_session_path, class: 'button radius', :method => :delete) %>
+        </li>
+      <% else %>
+        <li>
+        <%= link_to('Login', new_user_session_path, class: 'button radius') %>
         </li>
       <% end %>
     </ul>
